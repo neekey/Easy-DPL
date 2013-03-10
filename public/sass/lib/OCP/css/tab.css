@@ -1,0 +1,53 @@
+/* line 7, ../sass/tab.scss */
+.tab {
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+  height: 32px;
+  padding-left: 20px;
+  border-bottom: 1px solid #b1d1ff; }
+  /* line 15, ../sass/tab.scss */
+  .tab li {
+    float: left;
+    list-style: none;
+    margin-right: 3px; }
+  /* line 21, ../sass/tab.scss */
+  .tab a, .tab a span {
+    background: url("http://img01.taobaocdn.com/tps/i1/T1W0xkXnOTytPAZDfx-300-72.png") repeat-x scroll 0 0 transparent; }
+  /* line 25, ../sass/tab.scss */
+  .tab a span {
+    display: inline-block;
+    background-position: 100% -36px;
+    background-repeat: no-repeat;
+    color: #333;
+    cursor: pointer;
+    padding-top: 7px;
+    padding-right: 10px;
+    margin-top: 0;
+    height: 22px;
+    font-size: 14px;
+    text-align: center; }
+  /* line 39, ../sass/tab.scss */
+  .tab a {
+    padding-left: 10px;
+    display: inline-block;
+    margin-top: 3px;
+    background-position: 0 -36px;
+    background-repeat: no-repeat;
+    outline: none; }
+  /* line 49, ../sass/tab.scss */
+  .tab .selected a,
+  .tab a:hover {
+    position: relative;
+    top: 1px;
+    margin-top: 0;
+    background-position: 0 0;
+    text-decoration: none; }
+    /* line 56, ../sass/tab.scss */
+    .tab .selected a span,
+    .tab a:hover span {
+      padding-top: 8px;
+      background-position: 100% 0;
+      font-weight: 700;
+      margin-top: 0;
+      height: 24px; }

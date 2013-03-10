@@ -1,0 +1,190 @@
+@import "compass";
+@import "../variables";
+
+// OCP - TABLE STYLES
+// -------------
+
+// 变量
+// -----------------
+
+// table背景色
+$DefaultTableBgColor: white;
+// table边框颜色
+$DefaultTableBdColor: #ddd;
+// 表格行被hover背景色
+$DefaultTableHoverBgColor: #F2F2F2;
+// 被染色单元格/行颜色
+$DefaultTableColoredBgColor: #f2f2f2;
+// tfoot背景色
+$DefaultTableFooterBgColor: #f4f4f4;
+// table行距
+$DefaultTableLineHeight: $baseLineHeight;
+// caption行距
+$DefaultTableCaptionLineHeight: $baseLineHeight;
+// table字体尺寸
+$DefaultTableFontSize: $baseFontSize;
+// thead行距
+$DefaultTableHeaderLineHeight: $DefaultTableFontSize;
+// tfoot行距
+$DefaultTableFooterLineHeight: $DefaultTableFontSize;
+// multiple tbody 的分隔容器高度
+$DefaultTableSeparateTrHeight: 5px;
+
+// BASE Class
+// @Class
+// -----------------
+
+%table-common {
+  max-width: 100%;
+  width: 100%;
+  background-color: $DefaultTableBgColor;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: $DefaultTableFontSize;
+  caption-side: top;
+
+  caption {
+    line-height: $DefaultTableCaptionLineHeight;
+    margin-bottom: $DefaultTableCaptionLineHeight;
+
+    // HACK IE67 margin无效，暂时用padding来实现效果
+    // todo fix this...
+    *padding-bottom: $DefaultTableCaptionLineHeight;
+  }
+
+  th,
+  td {
+    padding: 8px;
+    line-height: $DefaultTableLineHeight;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid $DefaultTableBdColor;
+  }
+
+  // 标题默认加粗
+  th {
+    font-weight: bold;
+    line-height: $DefaultTableHeaderLineHeight;
+  }
+
+  // Bottom align for column headings
+  thead th {
+    vertical-align: bottom;
+  }
+
+  // 带有渐变效果的header
+  thead.table-style-header th {
+    @extend %table-style-header;
+  }
+
+  // 页脚
+  tfoot td {
+    font-weight: bold;
+    line-height: $DefaultTableFooterLineHeight;
+    background-color: $DefaultTableFooterBgColor;
+  }
+
+  // 染色
+  .colord {
+    background-color: $DefaultTableColoredBgColor;
+  }
+
+  // tbody中作为header的行
+  tr.sub-header {
+    @extend .colord;
+
+    td {
+      padding: 5px;
+    }
+  }
+
+  // 行与行之间的间隔行
+  tr.sub-separate {
+
+    height: $DefaultTableSeparateTrHeight;
+    td,
+    th {
+      padding: 0px;
+      margin: 0px;
+      border-left: none;
+      border-right: none;
+      height: $DefaultTableSeparateTrHeight;
+    }
+
+    // 当分割行出现在第一行/最后一行时，去掉对应位置的border
+    // IE9+完全支持，IE78只支持:first-child
+    &:last-child td,
+    &:last-child th {
+      border-bottom: none;
+    }
+
+    &:first-child td,
+    &:first-child th {
+      border-top: none;
+    }
+  }
+}
+
+// 使用固定布局
+// * IE在某些使用到colspan属性的情况下，会出现一个单元格中的内容宽度影响其它td宽度（即便设置了宽度）的情况
+// 此时可以用该属性来固定布局
+// @Class
+// --------------------------
+
+%table-layout-fixed {
+  table-layout: fixed;
+}
+
+// 具有Hover效果的table
+// IE7+
+// @Class
+// -----------------------
+
+%table-hover {
+
+  &:hover {
+    tbody tr:hover td,
+    tbody tr:hover th {
+      background-color: $DefaultTableHoverBgColor ;
+    }
+  }
+}
+
+// 单元行背景色更迭的Table（不兼容IE8-)
+// @Class
+// -------------------
+
+%table-striped {
+  tbody {
+    tr:nth-child(odd) td,
+    tr:nth-child(odd) th {
+      background-color: $DefaultTableHoverBgColor;
+    }
+  }
+}
+
+// 只保留外围border和每一行的上下border，去掉竖向的border
+// open意为“空旷的”
+// @Class
+// -----------------------------------------
+
+%table-opened {
+  th, td {
+    border: none {
+      top: 1px solid $DefaultTableBdColor;
+    }
+  }
+}
+
+// 具有渐变色的header
+// IE67 (89使用渐变滤镜会遮挡border，因此使用纯色代替）
+// @Class
+// --------------------------------------------------------
+
+%table-style-header {
+  @include background-image(linear-gradient( top, white 50%, #f4f4f4 51%, darken( white, 1% ) 100%));
+
+  // HACK IE89下filter-gradien会覆盖掉border，因此去掉filter，使用纯色bg，针对IE67使用filter
+  *filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFF4F4F4');
+  background-color: lighten(#f4f4f4, 3%);
+}

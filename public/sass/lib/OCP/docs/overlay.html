@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>OCP - Overlay</title>
+    <link rel="stylesheet" type="text/css" href="assets/tbreset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/ocp.css" media="all">
+    <link rel="stylesheet" href="assets/highlight/rainbow.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/common.css" media="all">
+    <script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+    <style>
+        .block .overlay-contain {
+            position: relative;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="description">
+    <h2>Overlay</h2>
+    <p>兼容性：IE6+（8-没有阴影）</p>
+</div>
+
+<div class="section">
+
+    <!-- 正常 -->
+    <div class="block">
+        <h4>正常的Overlay</h4>
+<!-- snap -->
+<pre class="J_Snap">
+    <div class="overlay" style="top: 25px; left: 0;">
+        <p class="close"><span class="icon-close"></span></p>
+        I am an overlay!
+    </div>
+</pre>
+<!-- snap END -->
+
+        <div class="overlay-contain">
+            <div class="overlay" style="top: 25px; left: 0;">
+                <p class="close"><span class="icon-close"></span></p>
+                I am an overlay!
+            </div>
+        </div>
+    </div>
+
+    <!-- loading -->
+    <div class="block">
+        <h4>Loading状态</h4>
+<!-- snap -->
+<pre class="J_Snap">
+    <div class="overlay loading" style="top: 25px; left: 0; width: 200px; height: 100px;">
+        <p class="close"><span class="icon-close"></span></p>
+    </div>
+</pre>
+<!-- snap END -->
+
+        <div class="overlay-contain">
+            <div class="overlay loading" style="top: 25px; left: 0; width: 200px; height: 100px;">
+                <p class="close"><span class="icon-close"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 结合 KISSY -->
+    <div class="block">
+        <h4>结合KISSY的overlay组建</h4>
+
+<!-- snap -->
+<pre class="J_Snap">
+    <div class="J_overlay overlay" style="top: 80px; left: 0; width: 200px; height: 100px;">
+        <p class="J_Close close"><span class="icon-close"></span></p>
+    </div>
+    <script type="text/javascript">
+        KISSY.use( 'overlay', function( S, Overlay ){
+
+            var ol = new Overlay({
+                srcNode: '.J_overlay',
+                mask: true
+            });
+
+            ol.render();
+            ol.hide();
+
+            S.one( '.J_Close').on( 'click', function(e){
+                e.preventDefault();
+                ol.hide();
+            });
+
+            S.one( '.J_Show').on( 'click', function(e){
+                e.preventDefault();
+                ol.center();
+                ol.show();
+            });
+        });
+
+    </script>
+</pre>
+<!-- snap END -->
+
+        <p><a class="J_Show btn-primary" href="#">show</a>
+        <div class="J_overlay overlay" style="top: 80px; left: 0; width: 200px; height: 100px;">
+            <p class="J_Close close"><span class="icon-close"></span></p>
+        </div>
+        <script type="text/javascript">
+            KISSY.use( 'overlay', function( S, Overlay ){
+
+                var ol = new Overlay({
+                    srcNode: '.J_overlay',
+                    mask: true
+                });
+
+                ol.render();
+                ol.hide();
+
+                S.one( '.J_Close').on( 'click', function(e){
+                    e.preventDefault();
+                    ol.hide();
+                });
+
+                S.one( '.J_Show').on( 'click', function(e){
+                    e.preventDefault();
+                    ol.show();
+                });
+            });
+
+        </script>
+    </div>
+
+    <script type="text/javascript" src="assets/snap.js"></script>
+    <script src="assets/highlight/highlight.min.js"></script>
+    <script type="text/javascript">
+
+        // 初始化highlight
+        hljs.initHighlightingOnLoad();
+
+    </script>
+</div>
+</body>
+</html>

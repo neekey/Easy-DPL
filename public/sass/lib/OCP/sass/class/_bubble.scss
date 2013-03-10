@@ -1,0 +1,144 @@
+// OCP - BUBBLE STYLES
+// -------------
+
+@import "../variables";
+@import "../mixin/bubble";
+
+// 变量
+// -------------
+
+// 气泡背景色
+$defaultBubbleBgColor: #ffffdd;
+
+// 气泡边框颜色
+$defaultBubbleBdColor: #ffcc66;
+
+// 气泡箭头边框宽度
+$defaultBubbleBdWidth: 1px;
+
+// 气泡箭头高度
+$defaultBubbleArrowWidth: 6px;
+
+// Base Bubble Class
+// ----------------------------------------------
+
+%bubble-common {
+  padding: 5px;
+  background-color: $defaultBubbleBgColor;
+  border: $defaultBubbleBdWidth solid $defaultBubbleBdColor;
+  color: inherit;
+  position: relative;
+  line-height: normal;
+
+  // HACK 触发Layout fix: IE6下绝对定位子元素绝对位置不正确的问题
+  _zoom:1;
+
+  // 让箭头出现在上方
+  .arrow-top {
+    @extend %arrow-top;
+  }
+
+  // 让箭头出现在下方
+  .arrow-bottom {
+    @extend %arrow-bottom;
+  }
+
+  // 让箭头出现在下方
+  .arrow-left {
+    @extend %arrow-left;
+  }
+
+  // 让箭头出现在下方
+  .arrow-right {
+    @extend %arrow-right;
+  }
+}
+
+// Base Arrow Class
+// ----------------------------------------------
+
+%arrow-common {
+
+  border: $defaultBubbleArrowWidth + $defaultBubbleBdWidth solid transparent;
+
+  // 内层arrow
+  i {
+    border: $defaultBubbleArrowWidth solid transparent;
+  }
+
+  &, & i {
+    position: absolute;
+    height: 0;
+    width: 0;
+
+    // HACK: fix: IE6下宽高不为0
+    _line-height: 0;
+
+    // HACK: IE6下需要使用dashed来实现透明，其他style都无法透明而显示黑色
+    // 也可以使用滤镜来处理透明，但是会导致内层箭头遮盖外层箭头的问题
+    _border-style: dashed;
+  }
+}
+
+// Base Arrow Class for top/right/bottom/left
+// ----------------------------------------------
+
+// 让箭头出现在上方
+%arrow-top {
+
+  @extend %arrow-common;
+  @include arrowStyle( top, $bgColor: $defaultBubbleBgColor, $bdColor: $defaultBubbleBdColor, $width: $defaultBubbleArrowWidth, $bdWidth: $defaultBubbleBdWidth );
+
+  // 从样式上考虑，箭头的边框颜色总是会和去泡一致
+  border-bottom-color: inherit;
+
+  // HACK IE67 fix: inherit无效
+  *border-bottom-color: $defaultBubbleBdColor;
+
+  &, & i {
+
+    // HACK IE6需要设置为solid才能显示出border的样色，下面的其他三个方向一致
+    _border-bottom-style: solid;
+  }
+}
+
+// 让箭头出现在下方
+%arrow-bottom {
+
+  @extend %arrow-common;
+  @include arrowStyle( bottom, $bgColor: $defaultBubbleBgColor, $bdColor: $defaultBubbleBdColor, $width: $defaultBubbleArrowWidth, $bdWidth: $defaultBubbleBdWidth );
+  border-top-color: inherit;
+  *border-top-color: $defaultBubbleBdColor;
+
+  &, & i {
+    _border-top-style: solid;
+  }
+}
+
+// 让箭头出现在下方
+%arrow-left {
+
+  @extend %arrow-common;
+  @include arrowStyle( left, $bgColor: $defaultBubbleBgColor, $bdColor: $defaultBubbleBdColor, $width: $defaultBubbleArrowWidth, $bdWidth: $defaultBubbleBdWidth );
+  border-right-color: inherit;
+  *border-right-color: $defaultBubbleBdColor;
+
+  &, & i {
+    _border-right-style: solid;
+  }
+}
+
+// 让箭头出现在下方
+%arrow-right {
+
+  @extend %arrow-common;
+  @include arrowStyle( right, $bgColor: $defaultBubbleBgColor, $bdColor: $defaultBubbleBdColor, $width: $defaultBubbleArrowWidth, $bdWidth: $defaultBubbleBdWidth );
+  border-left-color: inherit;
+  *border-left-color: $defaultBubbleBdColor;
+
+  &, & i {
+    _border-left-style: solid;
+  }
+}
+
+

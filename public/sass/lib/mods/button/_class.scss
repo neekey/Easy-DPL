@@ -1,0 +1,83 @@
+@import "compass";
+@import "vars";
+@import "mixin";
+
+// OCP - BUTTON STYLES
+// -------------
+
+// Base Class
+// --------------------------------------------------
+
+#{$BUTTON_CLASS_BASE} {
+
+  @include inline-block(top);
+  // IE67 下防止内容单个字符换行
+  *word-break: keep-all;
+  // 解决 IE6 下根据line-height不同，有时候会出现按钮太下面，部分没有显示出来的问题
+  *vertical-align: top;
+  margin-bottom: 0;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+
+  // 默认按钮样式
+  padding: $BUTTON_DEFAULT_PADDING;
+  font-size: $BUTTON_DEFAULT_FONT_SIZE;
+  line-height: $BUTTON_DEFAULT_LINE_HEIGHT;
+  color: $BUTTON_DEFAULT_COLOR;
+  border: $BUTTON_DEFAULT_BORDER;
+  @include border-radius($BUTTON_DEFAULT_BORDER_RADIUS);
+  @include text-shadow($BUTTON_DEFAULT_TEXT_SHADOW);
+  @include box-shadow($BUTTON_DEFAULT_BOX_SHADOW);
+
+  &:hover {
+    // 防止a元素hover时有下划线
+    text-decoration: none;
+  }
+
+  &:focus {
+    //@include webkit-style-focus();
+  }
+
+  // active 类似按钮被按下时的状态
+  &.active,
+  &:active {
+    outline: 0;
+    @include box-shadow($BUTTON_DEFAULT_BOX_SHADOW_ACTIVE);
+    background-image: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+// Cross-browser Hack
+// --------------------------------------------------
+
+button#{$BUTTON_CLASS_BASE} {
+
+  // 消除firefox中button额外的padding
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  // IE67下button有额外宽度的问题（且会随着按钮的增加而增加）
+  *overflow: visible;
+  // IE67下button会有额外的内border的问题
+  //*background: transparent;
+
+  // HACK IE67 为button类型添加额外的做外边距
+  *margin-left: 4px;
+}
+
+input#{$BUTTON_CLASS_BASE} {
+
+  // HACK IE6 fix:type=button时高度有问题...
+  _height: auto;
+
+  // HACK IE67 fix:type=button有额外的padding
+  *overflow: visible;
+  *width: auto;
+}

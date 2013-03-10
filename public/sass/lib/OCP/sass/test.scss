@@ -1,0 +1,99 @@
+@import "variables";
+@import "mixin/common";
+@import "class/test";
+
+// 引入全局变量
+$btnBaseFontSize: $baseFontSize;
+$btnBaseLineHeight: $baseLineHeight;
+
+// btn-small 的line-height
+$ocpSmallBtnLineHeight: 15px;
+// btn-large 的line-height
+$ocpNormalBtnLineHeight: 20px;
+// ocp按钮中的font-size
+$ocpButtonFontSize: 14px;
+// ocp按钮被禁用的背景色
+$ocpDisabledButtonBackground: #c9c9c9;
+// ocp按钮被禁用的文字颜色
+$ocpDisabledButtonTextColor: #666;
+
+// btn-enphasize 样式
+$btnEmphasizeBackground: #ff5b00;
+$btnEmphasizeBackgroundHighlight: #ffa749;
+
+$btnEmphasizeHoverBackground: #ff8203;
+$btnEmphasizeHoverBackgroundHighlight: #ffb14c;
+
+// btn-primary 样式
+$btnNormalBackground: #3399cc;
+$btnNormalBackgroundHighlight: #60b1d7;
+
+$btnNormalHoverBackground: #53abd4;
+$btnNormalHoverBackgroundHighlight: lighten(#64b3d8,10%);
+
+// btn-normal (default)
+$btnDefaultBackground: #e6e6e6;
+$btnDefaultBackgroundHighlight: white;
+
+$btnDefaultHoverBackground: lighten(#e6e6e6, 5%);
+$btnDefaultHoverBackgroundHighlight: white;
+
+
+@include addButtonSizeClass( default );
+
+@include addButtonSizeClass( large ){
+  line-height: $ocpNormalBtnLineHeight + 2;
+};
+
+@include addButtonSizeClass( small ){
+  line-height: $ocpSmallBtnLineHeight;
+};
+
+@include addButtonSizeClass( mini ){
+  padding: 2px 6px;
+  font-size: $btnBaseFontSize - 2px;
+  line-height: $btnBaseLineHeight - 4px;
+};
+
+@include addButtonStyleClass( disabled ){
+  color: $ocpDisabledButtonTextColor;
+  background-color: $ocpDisabledButtonBackground;
+  border-color: darken($ocpDisabledButtonBackground, 20%);
+  background-image: none;
+  @include opacity(65);
+  @include box-shadow(none);
+  cursor: not-allowed;
+};
+
+@include addButtonStyleClass( default, emphasize, primary ){
+  @include text-shadow( 0 -1px 0 rgba(0,0,0,.25));
+}
+
+@include addButtonStyleClass( default ){
+  @include text-shadow( none );
+  @include gradientButton($btnDefaultBackgroundHighlight, $btnDefaultBackground);
+
+  &:hover {
+    @include gradientButton($btnDefaultHoverBackgroundHighlight, $btnDefaultHoverBackground);
+  }
+};
+
+@include addButtonStyleClass( emphasize ){
+  color: $white;
+  @include gradientButton($btnEmphasizeBackgroundHighlight, $btnEmphasizeBackground);
+
+  &:hover {
+    @include gradientButton($btnEmphasizeHoverBackgroundHighlight, $btnEmphasizeHoverBackground);
+  }
+};
+
+@include addButtonStyleClass( primary ){
+  color: $white;
+  @include gradientButton($btnNormalBackgroundHighlight, $btnNormalBackground);
+
+  &:hover {
+    @include gradientButton($btnNormalHoverBackgroundHighlight, $btnNormalHoverBackground);
+  }
+};
+
+@include outputButton;

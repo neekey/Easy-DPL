@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>OCP - Table</title>
+    <link rel="stylesheet" type="text/css" href="assets/tbreset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/ocp.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/common.css" media="all">
+    <link rel="stylesheet" href="assets/highlight/rainbow.min.css">
+
+</head>
+
+<body>
+
+    <div class="description">
+        <h2>Table</h2>
+        <p>表格，根据下面样式对应的类名使用即可。</p>
+        <p>兼容性：IE6+ （具体兼容性看下方各状态说明）</p>
+        <div>最佳实践：table各元素的使用规则：
+<!-- snap -->
+<pre class="J_Snap">
+- table
+    - caption (必须紧跟在table后面）
+    - colgroup（用来控制列宽，以及列维度的通用样式）
+        - col
+    - thead
+        - tr th
+    - tfoot（table数据的summary，会被渲染在底部）
+        - tr td
+    - tbody
+        - tr td
+    - tbody .. 允许出现多个tbody，但是其他元素只有一个
+</pre>
+<!-- snap END -->
+
+        </div>
+    </div>
+    <div class="section">
+        <div class="block">
+            <h4>默认table/具有渐变色背景header/带有一个tfoot</h4>
+            <p>为thead添加类<code>.table-style-header</code>：渐变兼容性：IE67( IE89只有灰色背景 )</p>
+<!-- snap -->
+<pre class="J_Snap">
+<table class="table">
+    <caption>table</caption>
+    <!-- 具有颜色的header -->
+    <thead class="table-style-header">
+        <tr>
+            <th>标题</th>
+            <th>...</th>
+        </tr>
+    </thead>
+    <!-- 页脚 -->
+    <tfoot>
+        <tr><td colspan="5">页脚：一共五个字段</td></tr>
+    </tfoot>
+    <!-- 表格主体 -->
+    <tbody>
+        <tr>
+            <td>格子1格子1格子1格子1格子1格子1格子1</td>
+            <td>...</td>
+        </tr>
+    </tbody>
+</table>
+</pre>
+<!-- snap END -->
+
+            <table class="table">
+                <caption>.table</caption>
+                <thead class="table-style-header">
+                <tr>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                </tr>
+                </thead>
+                <tfoot>
+                    <tr><td colspan="5">页脚：一共五个字段</td></tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                    <td>格子1格子1格子1格子1格子1格子1格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="block">
+            <h4>具有hover效果table/具有多个tbody/每个tbody具有子header以及一个分隔行</h4>
+            <p>hover效果: IE7+: <code>.table-hover</code></p>
+            <p>子标题<code>.sub-header</code>，分隔行<code>.sub-separate</code></p>
+            <div>多个tbody写法:
+<!-- snap -->
+<pre class="J_Snap">
+<table class="table table-hover">
+    <tbody>
+        <!-- 用来分割的空隙 -->
+        <tr class="sub-separate"></tr>
+        <!-- 标题 -->
+        <tr class="sub-header">
+            <td>标题</td>
+        </tr>
+        <tr>
+            <td>数据内容...</td>
+        </tr>
+    </tbody>
+    <!-- 另一个 tbody -->
+    <tbody>
+        <!-- sub-separate -->
+        <!-- sub-header -->
+    </tbody>
+</table>
+</pre>
+<!-- snap END -->
+            </div>
+            <table class="table table-hover">
+                <caption>.table .table-hover</caption>
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="sub-separate"></tr>
+                <tr class="sub-header">
+                    <td>子标题</td>
+                    <td>子标题</td>
+                    <td>子标题</td>
+                    <td>子标题</td>
+                    <td>子标题</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                </tbody>
+
+                <tbody>
+                <tr class="sub-separate"></tr>
+                <tr class="sub-header">
+                    <td>子标题</td>
+                    <td>子标题</td>
+                    <td>子标题</td>
+                    <td>子标题</td>
+                    <td>子标题</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="block">
+            <h4>表格行背景色更迭( IE9+ )</h4>
+<!-- snap -->
+<pre class="J_Snap">
+<table class="table table-striped">
+</table>
+</pre>
+<!-- snap END -->
+            <table class="table table-striped">
+                <caption>.table .table-striped</caption>
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="block">
+            <h4>消除所有竖向的边框</h4>
+<!-- snap -->
+<pre class="J_Snap">
+<table class="table table-opened">
+</table>
+</pre>
+<!-- snap END -->
+            <table class="table table-opened">
+                <caption>.table .table-opened</caption>
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="block">
+            <h4>hover/行背景更迭/去除竖向边框</h4>
+            <table class="table table-opened table-striped table-hover">
+                <caption>.table .table-opened .table-striped</caption>
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="block">
+            <h4>自定义染色单元格/行</h4>
+            <p>为需要染色的节点添加<code>colord</code></p>
+            <table class="table">
+                <caption>.table</caption>
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>标题</th>
+                    <th class="colord">标题</th>
+                    <th>标题</th>
+                    <th>标题</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr class="colord">
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                </tr>
+                <tr>
+                    <td>格子1</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td>格子2</td>
+                    <td class="colord">格子2</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+    <script type="text/javascript" src="assets/snap.js"></script>
+    <script src="assets/highlight/highlight.min.js"></script>
+    <script type="text/javascript">
+
+        // 初始化highlight
+        hljs.initHighlightingOnLoad();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+/* line 25, ../sass/class/_bubble.scss */
+.bubble, .bubble-grey {
+  padding: 5px;
+  background-color: #ffffdd;
+  border: 1px solid #ffcc66;
+  color: inherit;
+  position: relative;
+  line-height: normal;
+  _zoom: 1; }
+
+/* line 60, ../sass/class/_bubble.scss */
+.bubble .arrow-top, .bubble-grey .arrow-top, .bubble .arrow-bottom, .bubble-grey .arrow-bottom, .bubble .arrow-left, .bubble-grey .arrow-left, .bubble .arrow-right, .bubble-grey .arrow-right {
+  border: 7px solid transparent; }
+  /* line 65, ../sass/class/_bubble.scss */
+  .bubble .arrow-top i, .bubble-grey .arrow-top i, .bubble .arrow-bottom i, .bubble-grey .arrow-bottom i, .bubble .arrow-left i, .bubble-grey .arrow-left i, .bubble .arrow-right i, .bubble-grey .arrow-right i {
+    border: 6px solid transparent; }
+  /* line 69, ../sass/class/_bubble.scss */
+  .bubble .arrow-top, .bubble-grey .arrow-top, .bubble .arrow-bottom, .bubble-grey .arrow-bottom, .bubble .arrow-left, .bubble-grey .arrow-left, .bubble .arrow-right, .bubble-grey .arrow-right, .bubble .arrow-top i, .bubble-grey .arrow-top i, .bubble .arrow-bottom i, .bubble-grey .arrow-bottom i, .bubble .arrow-left i, .bubble-grey .arrow-left i, .bubble .arrow-right i, .bubble-grey .arrow-right i {
+    position: absolute;
+    height: 0;
+    width: 0;
+    _line-height: 0;
+    _border-style: dashed; }
+
+/* line 87, ../sass/class/_bubble.scss */
+.bubble .arrow-top, .bubble-grey .arrow-top {
+  *border-bottom-color: #ffcc66;
+  border-width: 7px;
+  top: -14px;
+  left: 7.2px;
+  border-bottom-color: inherit;
+  *border-bottom-color: #ffcc66; }
+  /* line 95, ../sass/mixin/_bubble.scss */
+  .bubble .arrow-top i, .bubble-grey .arrow-top i {
+    border-width: 6px;
+    top: -5px;
+    left: -6px;
+    border-bottom-color: #ffffdd; }
+  /* line 98, ../sass/class/_bubble.scss */
+  .bubble .arrow-top, .bubble-grey .arrow-top, .bubble .arrow-top i, .bubble-grey .arrow-top i {
+    _border-bottom-style: solid; }
+
+/* line 106, ../sass/class/_bubble.scss */
+.bubble .arrow-bottom, .bubble-grey .arrow-bottom {
+  *border-top-color: #ffcc66;
+  border-width: 7px;
+  bottom: -14px;
+  _bottom: -15px;
+  left: 7.2px;
+  border-top-color: inherit;
+  *border-top-color: #ffcc66; }
+  /* line 95, ../sass/mixin/_bubble.scss */
+  .bubble .arrow-bottom i, .bubble-grey .arrow-bottom i {
+    border-width: 6px;
+    top: -7px;
+    left: -6px;
+    border-top-color: #ffffdd; }
+  /* line 113, ../sass/class/_bubble.scss */
+  .bubble .arrow-bottom, .bubble-grey .arrow-bottom, .bubble .arrow-bottom i, .bubble-grey .arrow-bottom i {
+    _border-top-style: solid; }
+
+/* line 119, ../sass/class/_bubble.scss */
+.bubble .arrow-left, .bubble-grey .arrow-left {
+  *border-right-color: #ffcc66;
+  border-width: 7px;
+  left: -14px;
+  top: 7.2px;
+  border-right-color: inherit;
+  *border-right-color: #ffcc66; }
+  /* line 95, ../sass/mixin/_bubble.scss */
+  .bubble .arrow-left i, .bubble-grey .arrow-left i {
+    border-width: 6px;
+    left: -5px;
+    top: -6px;
+    border-right-color: #ffffdd; }
+  /* line 126, ../sass/class/_bubble.scss */
+  .bubble .arrow-left, .bubble-grey .arrow-left, .bubble .arrow-left i, .bubble-grey .arrow-left i {
+    _border-right-style: solid; }
+
+/* line 132, ../sass/class/_bubble.scss */
+.bubble .arrow-right, .bubble-grey .arrow-right {
+  *border-left-color: #ffcc66;
+  border-width: 7px;
+  right: -14px;
+  top: 7.2px;
+  border-left-color: inherit;
+  *border-left-color: #ffcc66; }
+  /* line 95, ../sass/mixin/_bubble.scss */
+  .bubble .arrow-right i, .bubble-grey .arrow-right i {
+    border-width: 6px;
+    left: -7px;
+    top: -6px;
+    border-left-color: #ffffdd; }
+  /* line 139, ../sass/class/_bubble.scss */
+  .bubble .arrow-right, .bubble-grey .arrow-right, .bubble .arrow-right i, .bubble-grey .arrow-right i {
+    _border-left-style: solid; }
+
+/* line 14, ../sass/bubble.scss */
+.bubble-grey {
+  background-color: #f2f2f2;
+  border-color: #dddddd; }
+  /* line 39, ../sass/mixin/_bubble.scss */
+  .bubble-grey .arrow-top {
+    *border-bottom-color: #dddddd; }
+    /* line 95, ../sass/mixin/_bubble.scss */
+    .bubble-grey .arrow-top i {
+      border-bottom-color: #f2f2f2; }
+  /* line 39, ../sass/mixin/_bubble.scss */
+  .bubble-grey .arrow-bottom {
+    *border-top-color: #dddddd; }
+    /* line 95, ../sass/mixin/_bubble.scss */
+    .bubble-grey .arrow-bottom i {
+      border-top-color: #f2f2f2; }
+  /* line 39, ../sass/mixin/_bubble.scss */
+  .bubble-grey .arrow-left {
+    *border-right-color: #dddddd; }
+    /* line 95, ../sass/mixin/_bubble.scss */
+    .bubble-grey .arrow-left i {
+      border-right-color: #f2f2f2; }
+  /* line 39, ../sass/mixin/_bubble.scss */
+  .bubble-grey .arrow-right {
+    *border-left-color: #dddddd; }
+    /* line 95, ../sass/mixin/_bubble.scss */
+    .bubble-grey .arrow-right i {
+      border-left-color: #f2f2f2; }
+
+/*
+.bubble-grey-3b {
+  @include bubble-style( $bgColor: $ocpBubbleBackgrondGray, $bdColor: $ocpBubbleBorderGray, $arrowWidth: 6px, $bdWidth: 3px );
+}
+
+.bubble-3b {
+  @include bubble-style( $arrowWidth: 6px, $bdWidth: 5px );
+}
+*/

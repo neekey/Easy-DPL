@@ -1,0 +1,59 @@
+@import "class/icon";
+
+// 不同尺寸在sprite中的位置
+// ------------------------------------------------
+
+$iconSpriteSizeNormal: 0px;
+$iconSpriteSizeBig: -32px;
+$iconSpriteSizeLarge: -64px;
+
+// 不同类型在sprite中的位置
+// ------------------------------------------------
+
+$iconSpriteStyleTip: 0px;
+$iconSpriteStyleSuccess: -32px;
+$iconSpriteStyleInfo: -64px;
+$iconSpriteStyleQuestion: -96px;
+$iconSpriteStyleForbid: -128px;
+$iconSpriteStyleError: -160px;
+$iconSpriteStyleUp: -192px;
+$iconSpriteStyleDown: -224px;
+$iconSpriteStyleLeft: -256px;
+$iconSpriteStyleRight: -288px;
+$iconSpriteStyleClose: -320px;
+$iconSpriteStylePlus: -352px;
+$iconSpriteStyleMinus: -384px;
+$iconSpriteStyleFold: -416px;
+$iconSpriteStyleUnfold: -448px;
+$iconSpriteStyleSetting: -480px;
+$iconSpriteStyleEdit: -512px;
+
+.icon-tip               { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleTip }
+.icon-big-tip           { @extend %icon-big; background-position: $iconSpriteSizeBig $iconSpriteStyleTip }
+.icon-large-tip         { @extend %icon-large; background-position: $iconSpriteSizeLarge $iconSpriteStyleTip }
+.icon-success           { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleSuccess }
+.icon-big-success       { @extend %icon-big; background-position: $iconSpriteSizeBig $iconSpriteStyleSuccess }
+.icon-large-success     { @extend %icon-large; background-position: $iconSpriteSizeLarge $iconSpriteStyleSuccess }
+.icon-info              { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleInfo }
+.icon-big-info          { @extend %icon-big; background-position: $iconSpriteSizeBig $iconSpriteStyleInfo }
+.icon-large-info        { @extend %icon-large; background-position: $iconSpriteSizeLarge $iconSpriteStyleInfo }
+.icon-question          { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleQuestion }
+.icon-big-question      { @extend %icon-big; background-position: $iconSpriteSizeBig $iconSpriteStyleQuestion }
+.icon-large-question    { @extend %icon-large; background-position: $iconSpriteSizeLarge $iconSpriteStyleQuestion }
+.icon-forbid            { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleForbid }
+.icon-big-forbid        { @extend %icon-big; background-position: $iconSpriteSizeBig $iconSpriteStyleForbid }
+.icon-large-forbid      { @extend %icon-large; background-position: $iconSpriteSizeLarge $iconSpriteStyleForbid }
+.icon-error             { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleError }
+.icon-big-error         { @extend %icon-big; background-position: $iconSpriteSizeBig $iconSpriteStyleError }
+.icon-large-error       { @extend %icon-large; background-position: $iconSpriteSizeLarge $iconSpriteStyleError }
+.icon-up                { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleUp }
+.icon-down              { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleDown }
+.icon-left              { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleLeft }
+.icon-right             { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleRight }
+.icon-close             { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleClose }
+.icon-plus              { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStylePlus }
+.icon-minus             { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleMinus }
+.icon-fold              { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleFold }
+.icon-unfold            { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleUnfold }
+.icon-setting           { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleSetting }
+.icon-edit              { @extend %icon-normal; background-position: $iconSpriteSizeNormal $iconSpriteStyleEdit }

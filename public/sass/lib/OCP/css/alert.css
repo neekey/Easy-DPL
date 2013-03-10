@@ -1,0 +1,30 @@
+/* line 20, ../sass/class/_alert.scss */
+.alert-warning, .alert, .alert-success, .alert-info, .alert-error, .alert-question {
+  padding: 3px 5px 3px 5px;
+  line-height: 18px;
+  color: inherit; }
+
+/* line 25, ../sass/alert.scss */
+.alert-warning, .alert {
+  background-color: #ffffe5;
+  border: 1px solid #ffcc7f; }
+
+/* line 31, ../sass/alert.scss */
+.alert-success {
+  background-color: #f0ffe5;
+  border: 1px solid #4dbf00; }
+
+/* line 37, ../sass/alert.scss */
+.alert-info {
+  background-color: #e6f5ff;
+  border: 1px solid #40b3ff; }
+
+/* line 43, ../sass/alert.scss */
+.alert-error {
+  background-color: #fff3f3;
+  border: 1px solid #ff8080; }
+
+/* line 49, ../sass/alert.scss */
+.alert-question {
+  background-color: #f2f2f2;
+  border: 1px solid #bfbfbf; }

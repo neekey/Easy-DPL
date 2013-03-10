@@ -1,0 +1,514 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>OCP - Forms</title>
+    <link rel="stylesheet" type="text/css" href="assets/tbreset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/ocp.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/common.css" media="all">
+    <link rel="stylesheet" href="assets/highlight/rainbow.min.css">
+    <style type="text/css">
+        h5 {
+            margin-top: 20px;
+        }
+
+        form {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+<div class="description">
+    <h2>Form</h2>
+    <p>按钮组件，根据下面样式对应的类名使用即可。</p>
+    <p>兼容性：IE6+ 其中IE下除了9+外，其他版本没有圆角</p>
+</div>
+<div class="section">
+    <!--Default-->
+    <div class="block">
+        <h4>默认样式</h4>
+        <form>
+            <fieldset>
+                <legend>Legend</legend>
+                <label>Label</label>
+                <div>
+                    <h5>原生的表单元素</h5>
+                    <p>各表单元素最原始的状态，其中对于button类型的元素，推荐结合Button组件使用</p>
+                    <p>由于IE67不支持属性选择器，因此对于radio、checkbox、multiple select请分别添加上额外的class: .radio, .checkbox, .multiple</p>
+
+<!-- snap -->
+<pre class="J_Snap">
+<input type="text" placeholder="text input">
+<select>
+    <option>1</option>
+    <option>2</option>
+</select>
+<input type="radio" class="radio" name="default-radio">
+<input type="checkbox" class="checkbox" name="default-checkbox">
+<input type="file" class="file" name="default-input-file">
+<input type="button" class="btn" value="input-button">
+<button class="btn">Button</button>
+
+<select class="multiple" multiple>
+    <option>1</option>
+    <option>2</option>
+</select>
+<textarea placeholder="textarea"></textarea>
+</pre>
+<!-- snap END -->
+
+                    <p>
+                        <input type="text" placeholder="text input">
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                        <input type="radio" class="radio" name="default-radio">
+                        <input type="checkbox" class="checkbox" name="default-checkbox">
+                        <input type="file" class="file" name="default-input-file">
+                        <input type="button" class="btn" value="input-button">
+                        <button class="btn">Button</button>
+                    </p>
+                    <p>
+                        <select class="multiple" multiple>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                        <textarea placeholder="textarea"></textarea>
+                    </p>
+
+                </div>
+
+                <div>
+                    <h5>结合Label使用</h5>
+                    <p>对于radio和checkbox，请为label添加class：.radio / .checkbox</p>
+
+<!-- snap -->
+<pre class="J_Snap">
+<label>Label: input[text]<input type="text" placeholder="text input with label"></label>
+<label class="radio"><input type="radio" class="radio" name="default-radio-with-label">input[radio]</label>
+<label class="checkbox" for="default-checkbox-with-label"><input id="default-checkbox-with-label" type="checkbox" class="checkbox" name="default-checkbox-with-label">input[checkbox]</label>
+<label>select
+    <select class="disabled" disabled>
+        <option>1</option>
+        <option>2</option>
+    </select>
+</label>
+<label>select
+    <select>
+        <option>1</option>
+        <option>2</option>
+    </select>
+</label>
+<label for="default-input-file-with-label">input[file]<input id="default-input-file-with-label" type="file" class="file" name="default-input-file-with-label"></label>
+<label>textarea<textarea placeholder="textarea with label"></textarea></label>
+</pre>
+<!-- snap END -->
+
+                    <label>Label: input[text]<input type="text" placeholder="text input with label"></label>
+                    <label class="radio"><input type="radio" class="radio" name="default-radio-with-label">input[radio]</label>
+                    <label class="checkbox" for="default-checkbox-with-label"><input id="default-checkbox-with-label" type="checkbox" class="checkbox" name="default-checkbox-with-label">input[checkbox]</label>
+                    <label>select
+                        <select class="disabled" disabled>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </label>
+                    <label>select
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </label>
+                    <label for="default-input-file-with-label">input[file]<input id="default-input-file-with-label" type="file" class="file" name="default-input-file-with-label"></label>
+                    <label>textarea<textarea placeholder="textarea with label"></textarea></label>
+                </div>
+
+                <div>
+                    <h5>附加文字</h5>
+                    <p>分为行内文字和块级文字两种，添加类名：help-inline / help-block 即可</p>
+<!-- snap -->
+<pre class="J_Snap">
+<input type="text" placeholder="text input"><span class="help-inline">Example inline-level help text here.</span>
+<label class="checkbox"><input type="checkbox" class="checkbox" name="default-checkbox-with-block-help">input[checkbox]</label>
+<span class="help-block">Example block-level help text here.</span>
+</pre>
+<!-- snap END -->
+                    <input type="text" placeholder="text input"><span class="help-inline">Example inline-level help text here.</span>
+                    <label class="checkbox"><input type="checkbox" class="checkbox" name="default-checkbox-with-block-help">input[checkbox]</label>
+                    <span class="help-block">Example block-level help text here.</span>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+
+    <!--Default-->
+    <div class="block">
+        <h4>行内表单</h4>
+        <p>如果需要构建一个水平方向排列的表单，请为form元素添加类：<code>.form-inline</code></p>
+
+        <form class="form-inline">
+            <div>
+                <h5>原生表单元素</h5>
+                <p>
+                    <select class="disabled" disabled>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                    <input type="text" placeholder="text input">
+                    <input type="radio" class="radio" name="form-inline-radio">
+                    <input type="checkbox" class="checkbox" name="form-inline-checkbox">
+                    <input type="file" class="file">
+                    <input type="button" class="btn" value="input-button">
+                    <button class="btn">Button</button>
+                </p>
+                <p>
+                    <select class="multiple" multiple>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                    <textarea placeholder="textarea"></textarea>
+                </p>
+            </div>
+
+            <div>
+                <h5>结合Lable使用</h5>
+                <p>
+                    <label>input[text]<input type="text" placeholder="text input"></label>
+                    <label>select
+                        <select class="disabled" disabled>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </label>
+                    <label>select
+                        <select>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </label>
+                    <label class="radio"><input type="radio" class="radio" name="form-inline-radio-with-label">input[radio]</label>
+                    <label class="checkbox"><input type="checkbox" class="checkbox" name="form-inline-checkbox-with-label">input[checkbox]</label>
+
+                    <label for="form-inline-input-file-with-label">input[file]<input id="form-inline-input-file-with-label" type="file" class="file"></label>
+                </p>
+                <p>
+                    <label>textarea<textarea placeholder="textarea"></textarea></label>
+                </p>
+            </div>
+
+            <div>
+                <h5>附加文字</h5>
+                <input type="text" placeholder="text input"><span class="help-inline">Example inline-level help text here.</span>
+            </div>
+        </form>
+    </div>
+
+    <!--Emphasize-->
+    <div class="block">
+        <h4>垂直布局</h4>
+        <p>若希望使用竖向布局的表单，则请为form元素添加类：<code>.form-horizontal</code>，请按照下方布局的方式来书写HTML结构</p>
+        <p>若希望在<code>.controls</code>中添加连个水平排列的表单元素（如下方最后一行显示的两个radio），则请为对应的label添加类：<code>.inline</code></p>
+<!-- snap -->
+<pre class="J_Snap">
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" for="text-input">text input</label>
+            <div class="controls">
+                <input type="text" id="text-input" placeholder="text input">
+                <span class="help-inline">inline-help text</span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="check-box">checkbox</label>
+            <div class="controls">
+                <label class="checkbox">
+                    <input class="checkbox" id="check-box" name="form-horizontal-checkbox" type="checkbox">Remember me
+                </label>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="radio">radio</label>
+            <div class="controls">
+                <label class="radio">
+                    <input class="radio" id="radio" name="form-horizontal-radio" type="radio">Remember me
+                </label>
+            </div>
+        </div>
+        ...
+    </form>
+</pre>
+<!-- snap END -->
+
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="text-input">text input</label>
+                <div class="controls">
+                    <input type="text" id="text-input" placeholder="text input">
+                    <span class="help-inline">inline-help text</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="text-input-with-block-help">text input</label>
+                <div class="controls">
+                    <input type="password" id="text-input-with-block-help" placeholder="Password">
+                    <span class="help-block">block-help text</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="check-box">checkbox</label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input class="checkbox" id="check-box" name="form-horizontal-checkbox" type="checkbox">Remember me
+                    </label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="radio">radio</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input class="radio" id="radio" name="form-horizontal-radio" type="radio">Remember me
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="form-horizontal-input-file">input[file]</label>
+                <div class="controls">
+                    <input type="file" id="form-horizontal-input-file" class="file">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="textarea">textarea</label>
+                <div class="controls">
+                    <textarea id="textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="text-input">text input</label>
+                <div class="controls">
+                    <input type="text" id="text-input" placeholder="text input">
+                    <span class="help-inline">inline-help text</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="select">select</label>
+                <div class="controls">
+                    <select id="select">
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="select-with-label">select</label>
+                <div class="controls">
+                    <label>select
+                        <select id="select-with-label">
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="select-with-label">select</label>
+                <div class="controls">
+                    <label>text<input type="text">
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="select-disabled">select</label>
+                <div class="controls">
+                    <select id="select-disabled" class="disabled" disabled>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="multiple-select">multiple select</label>
+                <div class="controls">
+                    <select id="multiple-select" class="multiple" multiple>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">block fields</label>
+                <div class="controls">
+                    <label class="radio">
+                        <input class="radio" name="form-horizontal-checkbox-block" type="radio">radio
+                    </label>
+                    <label class="checkbox">
+                        <input class="checkbox" name="form-horizontal-checkbox-block" type="radio">checkbox
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">inline fields</label>
+                <div class="controls">
+                    <label class="radio inline">
+                        <input class="radio" name="form-horizontal-checkbox-inline" type="radio">radio
+                    </label>
+                    <label class="checkbox inline">
+                        <input class="checkbox" name="form-horizontal-checkbox-inline" type="radio">checkbox
+                    </label>
+                </div>
+            </div>
+        </form>
+
+        <h4>为垂直布局中的字段名称设置宽度</h4>
+        <p>我们可以通过为form额外添加类<code>label-width#</code>来制定<code>control-label</code>的宽度百分比</p>
+        <p>如，<code>label-width1</code>为10%，<code>label-width2</code>为20%。考虑到实际使用可选的范围为1-7</p>
+        <p>也可以为<code>control-group</code>添加该类，来单独制定某一个group的<code>control-label</code>宽度</p>
+        <form class="form-horizontal label-width3">
+            <div class="control-group">
+                <label class="control-label" for="text-input-inherit">inherit label width from form</label>
+                <div class="controls">
+                    <input type="text" id="text-input-inherit" placeholder="text input">
+                </div>
+            </div>
+            <div class="control-group label-width1">
+                <label class="control-label" for="text-input-1">label-width1</label>
+                <div class="controls">
+                    <input type="text" id="text-input-1" placeholder="text input">
+                </div>
+            </div>
+
+            <div class="control-group label-width2">
+                <label class="control-label" for="text-input-2">label-width2</label>
+                <div class="controls">
+                    <input type="text" id="text-input-2" placeholder="text input">
+                </div>
+            </div>
+
+            <div class="control-group label-width3">
+                <label class="control-label" for="text-input-3">label-width3</label>
+                <div class="controls">
+                    <input type="text" id="text-input-3" placeholder="text input">
+                </div>
+            </div>
+
+            <div class="control-group label-width4">
+                <label class="control-label" for="text-input-4">label-width4</label>
+                <div class="controls">
+                    <input type="text" id="text-input-4" placeholder="text input">
+                </div>
+            </div>
+
+            <div class="control-group label-width5">
+                <label class="control-label" for="text-input-5">label-width5</label>
+                <div class="controls">
+                    <input type="text" id="text-input-5" placeholder="text input">
+                </div>
+            </div>
+
+            <div class="control-group label-width6">
+                <label class="control-label" for="text-input-6">label-width6</label>
+                <div class="controls">
+                    <input type="text" id="text-input-6" placeholder="text input">
+                </div>
+            </div>
+
+            <div class="control-group label-width7">
+                <label class="control-label" for="text-input-7">label-width7</label>
+                <div class="controls">
+                    <input type="text" id="text-input-7" placeholder="text input">
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="block">
+        <h4>其他的表单状态</h4>
+        <p>disabled/form action（按钮等的放置区）</p>
+        <p>注意由于IE67不支持属性选择符，因此请在为元素添加<code>disabled</code>属性的同时，添加类名: <code>.disabled</code></p>
+        <form>
+            <input type="text" class="disabled" placeholder="text input" disabled>
+            <input type="radio" class="radio disabled" name="radio-disabled" disabled>
+            <input type="checkbox" class="checkbox disabled" name="checkbox-disabled" disabled>
+            <input type="file" class="file disabled" disabled>
+            <button class="btn-disabled" disabled>disabled button</button>
+            <select class="disabled" disabled>
+                <option>1</option>
+                <option>2</option>
+            </select>
+
+            <p>当你需要使用一般的div来代替input时，可以使用累.uneditable-input</p>
+            <div class="uneditable-input">uneditable-input</div>
+            <p>当你需要使用一般的div来代替textarea时，可以使用累.uneditable-textarea</p>
+
+            <div>
+                <div class="uneditable-textarea">uneditable-textarea urea uneditable-textarea uneditable-textarea uneditable-textarea uneditable-textarea </div>
+                <textarea class="disabled" disabled></textarea>
+            </div>
+
+            <div>
+                <select class="multiple disabled" multiple disabled>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button>button</button>
+            </div>
+        </form>
+    </div>
+
+    <!--Emphasize-->
+    <div class="block">
+        <h4>使用span#来控制input宽度</h4>
+        <p>可以结合Grid系统中的<code>span#</code>来方便地设置input的宽度</p>
+<pre class="J_Snap">
+    <form>
+        <label><input type="text" class="span1" placeholder="text input" ></label>
+        <label><input type="text" class="span2" placeholder="text input" ></label>
+        ...
+    </form>
+</pre>
+        <form>
+            <label><input type="text" class="span1" placeholder="text input" ></label>
+            <label><input type="text" class="span2" placeholder="text input" ></label>
+            <label><input type="text" class="span3" placeholder="text input" ></label>
+            <label><input type="text" class="span4" placeholder="text input" ></label>
+            <label><input type="text" class="span5" placeholder="text input" ></label>
+            <label><input type="text" class="span6" placeholder="text input" ></label>
+            <label><input type="text" class="span7" placeholder="text input" ></label>
+            <label><input type="text" class="span8" placeholder="text input" ></label>
+            <label><input type="text" class="span9" placeholder="text input" ></label>
+            <label><input type="text" class="span10" placeholder="text input" ></label>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script type="text/javascript" src="assets/snap.js"></script>
+<script src="assets/highlight/highlight.min.js"></script>
+<script type="text/javascript">
+
+    // 初始化highlight
+    hljs.initHighlightingOnLoad();
+
+</script>
+</body>
+</html>

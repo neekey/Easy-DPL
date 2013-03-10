@@ -1,0 +1,99 @@
+$btnSizeClassPrefix: "%btn-size-";
+$btnStyleClassPrefix: "%btn-style-";
+
+// todo 添加用于修改和微调的快捷方法
+
+@mixin addButtonSizeClass( $names... ){
+
+  $selector: listToString( $names, ",", $btnSizeClassPrefix );
+
+  #{$selector} {
+    @content;
+  }
+
+  @each $name in $names {
+    // 不重复添加列表
+    @if index( $btnSizeList, $name ) == false {
+      $btnSizeList: append( $btnSizeList, $name, space );
+    }
+  }
+}
+
+@mixin addButtonStyleClass( $names... ){
+
+  $selector: listToString( $names, ",", $btnStyleClassPrefix );
+
+  #{$selector} {
+    @content;
+  }
+
+  @each $name in $names {
+    // 不重复添加列表
+    @if index( $btnStyleList, $name ) == false {
+      $btnStyleList: append( $btnStyleList, $name, space );
+    }
+  }
+}
+
+@mixin outputButton(){
+
+  $sizeList: $btnSizeList;
+  $styleList: $btnStyleList;
+
+  @each $size in $sizeList {
+    @each $style in $styleList {
+
+      $selectorName: "btn";
+
+      @if $size != default {
+        $selectorName: #{$selectorName}-#{$size};
+      }
+
+      @if $style != default  {
+        $selectorName: #{$selectorName}-#{$style};
+      }
+
+      .#{$selectorName} {
+        @extend %btn-common;
+        @extend #{$btnSizeClassPrefix}#{$size} !optional;
+        @extend #{$btnStyleClassPrefix}#{$style} !optional;
+      }
+    }
+  }
+}
+
+//
+// 设置按钮的渐变背景，字体颜色，边框颜色，hover的lighten
+// @param {Color} light
+// @param {Color} dark
+//
+@mixin gradientButton( $light, $dark ){
+  @include background-image(linear-gradient( $light, $dark 40% ));
+  //filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr=#{$light}, endColorstr=#{$dark});
+  @include filter-gradient($light, $dark, vertical);
+  // todo 将 IE9与以下的IE区分开，IE9不用filter（filter貌似和border-radius一起用，radis失效，但是IE9使用inset类型的box-shadow也能产生立体感，其他版本使用filter
+  //filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)\9\0;
+
+  background-color: mix( $light, $dark );
+
+  // 根据背景色渐变设置border颜色
+  border-color: $dark $dark darken( $dark, 15% ) $dark;
+}
+
+@function listToString( $list, $separator: null, $decorator: null ){
+  $count: 0;
+  $len: length( $list );
+  $string: "";
+  @each $value in $list {
+    @if( $count == $len - 1 ){
+      $string: #{$string} #{$decorator}#{$value};
+    }
+    @else {
+      $string: #{$string} #{$decorator}#{$value}#{$separator};
+    }
+
+    $count: $count + 1;
+  }
+
+  @return $string;
+}

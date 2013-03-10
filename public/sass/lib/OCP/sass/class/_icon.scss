@@ -1,0 +1,51 @@
+@import "compass";
+@import "../variables";
+
+// OCP - ICON STYLES
+// -------------
+
+
+// 变量
+// -------------
+
+$normalIconSize:16px;
+$bigIconSize:24px;
+$largeIconSize:32px;
+$ocpIconSpritePath: "http://img01.taobaocdn.com/tps/i1/T1YMzGXgNfXXc7AP2k-96-544.png";
+// 由于原图有阴影，保存成PNG8后有杂色，且PSD源文件找不到了...所以给IE6扣了一张，但是效果不是特别好
+$ocpIconSpritePathIE6: "http://img03.taobaocdn.com/tps/i3/T10fUQXgteXXcpptcW-900-600.png";
+
+// Base Class
+// ------------------------------------------------
+%icon-common {
+  @include inline-block(middle);
+  width: $normalIconSize;
+  height: $normalIconSize;
+  line-height: $normalIconSize;
+  vertical-align: text-top;
+  background-image: url(#{$ocpIconSpritePath});
+  _background-image: url(#{$ocpIconSpritePathIE6});
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+// Size Classes
+// -----------------------------------------------
+
+%icon-normal {
+  @extend %icon-common;
+}
+
+%icon-big {
+  @extend %icon-common;
+  width: $bigIconSize;
+  height: $bigIconSize;
+  line-height: $bigIconSize;
+}
+
+%icon-large {
+  @extend %icon-common;
+  width: $largeIconSize;
+  height: $largeIconSize;
+  line-height: $largeIconSize;
+}

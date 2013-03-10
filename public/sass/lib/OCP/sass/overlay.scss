@@ -1,0 +1,12 @@
+@import "class/overlay";
+
+.overlay,
+.dialog {
+  @extend %overlay;
+}
+
+.overlay-mask,
+// KISSY 的 Mask
+.ks-ext-mask {
+  @extend %overlay-mask;
+}

@@ -1,0 +1,170 @@
+@import "../common/helpers";
+
+// 取消box shadow
+@mixin disableButtonBoxShadow(){
+  @include box-shadow(none);
+  &:active {
+    @include box-shadow(none);
+  }
+}
+
+// 取消文字阴影
+@mixin disableButtonTextShadow(){
+  @include text-shadow(none);
+}
+
+// 设置自动输出类名时的默认样式名称
+@mixin setDefaultButtonClass( $name ){
+  $BUTTON_DEFAULT_CLASS: $name;
+}
+
+// 更改Button的基础样式
+@mixin setButtonForAll(){
+  #{$BUTTON_CLASS_BASE} {
+    @content;
+  }
+}
+
+// 添加新的按钮的尺寸类型，可以一次性设置多个
+@mixin newButtonSize( $names... ){
+
+  $selector: listToString( $names, ",", $BUTTON_CLASS_SIZE_PREFIX );
+
+  #{$selector} {
+    @content;
+  }
+
+  @each $name in $names {
+    // 不重复添加列表
+    @if index( $BUTTON_CLASS_SIZE_LIST, $name ) == false {
+      $BUTTON_CLASS_SIZE_LIST: append( $BUTTON_CLASS_SIZE_LIST, $name, space );
+    }
+  }
+}
+
+// 添加新的按钮的样式，可以一次性设置多个
+@mixin newButtonType( $names... ){
+
+  $selector: listToString( $names, ",", $BUTTON_CLASS_STYLE_PREFIX );
+
+  #{$selector} {
+    @content;
+  }
+
+  @each $name in $names {
+    // 不重复添加列表
+    @if index( $BUTTON_CLASS_STYLE_LIST, $name ) == false {
+      $BUTTON_CLASS_STYLE_LIST: append( $BUTTON_CLASS_STYLE_LIST, $name, space );
+    }
+  }
+}
+
+@mixin applyButtonStyle(){
+  @include applyButtonBase();
+  @content;
+}
+
+@mixin applyButtonBase(){
+  @extend #{$BUTTON_CLASS_BASE};
+}
+
+@mixin applyButtonSize( $name, $useBase: false ){
+  @if( $useBase == true ){
+    @include applyButtonBase();
+  }
+  @extend #{$BUTTON_CLASS_SIZE_PREFIX}#{$name} !optional;
+}
+
+@mixin applyButtonType( $name, $useBase: false ){
+  @if( $useBase == true ){
+    @include applyButtonBase();
+  }
+  @extend #{$BUTTON_CLASS_STYLE_PREFIX}#{$name} !optional;
+}
+
+@mixin outputAllButtons(){
+
+  $sizeList: $BUTTON_CLASS_SIZE_LIST;
+  $styleList: $BUTTON_CLASS_STYLE_LIST;
+
+  @debug $sizeList;
+  @debug $styleList;
+
+  @each $size in $sizeList {
+    @each $style in $styleList {
+
+      $selectorName: $BUTTON_DEFAULT_CLASS;
+
+      @if $size != default {
+        $selectorName: #{$selectorName}-#{$size};
+      }
+
+      @if $style != default  {
+        $selectorName: #{$selectorName}-#{$style};
+      }
+
+      .#{$selectorName} {
+        @extend #{$BUTTON_CLASS_BASE};
+        @extend #{$BUTTON_CLASS_SIZE_PREFIX}#{$size} !optional;
+        @extend #{$BUTTON_CLASS_STYLE_PREFIX}#{$style} !optional;
+      }
+    }
+  }
+}
+
+//
+// 设置按钮的渐变背景，字体颜色，边框颜色，hover的lighten
+// @param {Color} light
+// @param {Color} dark
+//
+@mixin setButtonBg( $light, $dark:null, $pos:null, $setBorder:null, $borderDarken:null ){
+
+  $defaultGradientPos: 40%;
+  $defaultBorderDarken: 20%;
+  $ifGradient: false;
+  $ifSetBorder: false;
+  $borderColor: $light;
+
+  @if( type-of($dark) == color ){
+    $ifGradient: true;
+    $borderColor: $dark;
+    @if(type-of($pos) == bool){
+      $ifSetBorder: true;
+      @if(type-of($setBorder) == number){
+        $defaultBorderDarken: $setBorder;
+      }
+    }
+    @else if (type-of($pos) == number){
+      $defaultGradientPos: $pos;
+      @if(type-of($setBorder) == bool){
+        $ifSetBorder: true;
+        @if(type-of($borderDarken) == number){
+          $defaultBorderDarken: $borderDarken;
+        }
+      }
+    }
+  }
+  @else if ( type-of($dark) == bool){
+    $ifSetBorder: true;
+    @if(type-of($pos) == number){
+      $defaultBorderDarken: $pos;
+    }
+  }
+
+  @if( $ifGradient ){
+    @include background-image(linear-gradient( $light, $dark $defaultGradientPos ));
+    //filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr=#{$light}, endColorstr=#{$dark});
+    @include filter-gradient($light, $dark, vertical);
+    // todo 将 IE9与以下的IE区分开，IE9不用filter（filter貌似和border-radius一起用，radis失效，但是IE9使用inset类型的box-shadow也能产生立体感，其他版本使用filter
+    //filter: progid:DXImageTransform.Microsoft.gradient(enabled=false)\9\0;
+    background-color: mix( $light, $dark );
+  }
+  @else {
+    background-color: $light;
+  }
+
+  @if( $ifSetBorder ){
+    @debug $borderColor;
+    border-color: $borderColor $borderColor darken( $borderColor, $defaultBorderDarken ) $borderColor;
+  }
+}

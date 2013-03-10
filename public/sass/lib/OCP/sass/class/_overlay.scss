@@ -1,0 +1,55 @@
+@import "compass";
+@import "../variables";
+@import "../mixin/common";
+
+// OCP - OVERLAY STYLES
+// -------------
+
+// 变量
+// ----
+
+// 默认overlay的 padding
+$defaultOverlayPadding : 20px;
+// 默认overlay边框 颜色
+$defaultOverlayBorderColor : #A3C7C7;
+// 默认overlay背景 颜色
+$defaultOverlayBgColor : #E6F2FF;
+// 默认overlay的mask背景色
+$defaultOverlayMaskBgColor: black;
+// 默认overlay的mask的透明度
+$defaultOverlayMaskOpacity: 0.3;
+
+%overlay {
+  position:absolute;
+  left:-9999px;
+  top:-9999px;
+  border: 1px solid $defaultOverlayBorderColor;
+  padding: $defaultOverlayPadding;
+  background-color: $defaultOverlayBgColor;
+  box-shadow: 5px 5px 5px #555;
+
+  .close {
+    margin: 0;
+    height: 16px;
+    width: 16px;
+    border: 1px solid transparent;
+    right: 6px;
+    top: 6px;
+    position: absolute;
+    text-decoration: none;
+    outline: none;
+    @include transparentColor( border-color );
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid #CED5E0;
+      background: white;
+    }
+  }
+}
+
+%overlay-mask {
+  background-color: $defaultOverlayMaskBgColor;
+  @include opacity($defaultOverlayMaskOpacity);
+}

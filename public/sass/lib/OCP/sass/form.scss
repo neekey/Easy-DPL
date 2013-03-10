@@ -1,0 +1,604 @@
+@import "compass";
+@import "variables";
+@import "mixin/common";
+
+// 默认 line-height
+$defaultFormLineHeight: 20px;
+// 默认 font-size
+$defaultFormFontSize: $baseFontSize;
+// 默认 font-family
+$defaultFormFontFamily: $baseFontFamily;
+// 默认 表单元素的 height
+$defaultFormElementHeight: $baseLineHeight;
+// 默认 表单元素的 width
+$defaultFormElementWidth: 210px;
+// 默认 legend color
+$defaultFormLegendColor: $grayDark;
+// 默认 label color
+$defaultFormLabelColor: $grayDark;
+// 默认 input color
+$defaultFormInputColor: $gray;
+// 默认 input padding vertical
+$defaultFormInputPaddingVertical: 4px;
+// 默认 input padding horizontal
+$defaultFormInputPaddingHorizontal: 6px;
+// 默认 input color
+$defaultFormInputColor: $gray;
+// 默认 input background-color
+$defaultFormInputBgColor: $inputBackground;
+// 默认 input disabled background-color
+$defaultFormInputDisabledBgColor: $inputDisabledBackground;
+// 默认 input border-color
+$defaultFormInputBdColor: $inputBorder;
+// 默认 input border-width
+$defaultFormInputBdWidth: 1px;
+// 默认 input border-radius
+$defaultFormInputBdRadius: $inputBorderRadius;
+// 默认 form-action background-color
+$defaultFormActionBgColor: $formActionsBackground;
+// 默认 help-text color
+$defaultFormHelpTextColor: $gray;
+// 默认 横向布局的form中 label 和 controls 的间隔
+$defaultFormControlGroupGap: 20px;
+// 默认 placeholder color
+$defaultFormPlaceholderColor: #aaa;
+// 默认 control-label width
+$defaultFormControlLabelWidth: 140px;
+
+// non-normal input height
+// 为了保持select以及其他非input[text]类型的元素（如input[file]，这些元素的实际展现宽高只和w与h有关，与padding之类的无关）高度和宽度一致
+// 这里根据input[text]的情况做换算
+// ----------------------------
+$defaultFormNonNormalInputHeight: $defaultFormElementHeight + $defaultFormInputBdWidth * 2 + $defaultFormInputPaddingVertical * 2;
+$defaultFormNonNormalInputWidth: $defaultFormElementWidth + $defaultFormInputBdWidth * 2 + $defaultFormInputPaddingHorizontal * 2;
+
+// Form-Element margin-bottom
+$defaultFormElementMarginBottom: ceil( $defaultFormLineHeight / 2 );
+
+@function verticalAlignTop( $targetH, $ifLineHeight: null ){
+
+  $height: $defaultFormLineHeight;
+
+  @if $ifLineHeight == null {
+    $height: $defaultFormNonNormalInputHeight;
+  }
+
+  @return ceil( ( $height - $targetH ) / 2 );
+}
+
+// Form
+// -------------------------------
+
+form {
+  margin: 0;
+}
+
+// 默认 form-associated 元素
+// ----------------------------------------
+
+// 表单项集合，没有具体样式，其主要功能是语义的划分
+fieldset {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+// 一个表单集合的标题（caption），作为fieldset的第一个元素存在
+legend {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: $defaultFormElementHeight * 1.5;
+  font-size: $defaultFormFontSize * 1.5;
+  line-height: $defaultFormElementHeight * 2;
+  color: $defaultFormLegendColor;
+  border: 0 {
+    bottom: 1px solid #eee;
+  };
+}
+
+// 标签元素
+label {
+  display: block;
+  margin-bottom: $defaultFormElementMarginBottom;
+  color: $defaultFormLabelColor;
+  font: {
+    size: $defaultFormFontSize;
+    weight: normal;
+  }
+  line-height: $defaultFormLineHeight;
+}
+
+// 默认的 表单元素
+// -------------------------------
+
+input,
+select,
+textarea,
+.uneditable-textarea,
+.uneditable-input,
+button {
+  // 默认都为inline-block，且自适应垂直居中
+  @include ocp-inline-block( middle );
+  font: {
+    family: $defaultFormFontFamily;
+    size: $defaultFormFontSize;
+    weight: normal;
+  }
+  line-height: $defaultFormLineHeight;
+
+  // 注意到，如果元素放置在label内部，两个margin-bottom会被自动合并掉
+  margin-bottom: $defaultFormElementMarginBottom;
+}
+
+input,
+textarea,
+select,
+  // 不可编辑的input/textarea样式，用于纯粹的展现（可以使用一般的标签来代替input，如span）
+.uneditable-textarea,
+.uneditable-input {
+  width: $defaultFormElementWidth;
+  height: $defaultFormElementHeight;
+  padding: $defaultFormInputPaddingVertical $defaultFormInputPaddingHorizontal;
+  color: $defaultFormInputColor;
+  background-color: $defaultFormInputBgColor;
+  border: $defaultFormInputBdWidth solid $defaultFormInputBdColor;
+  @include border-radius($defaultFormInputBdRadius);
+
+  // 设置placeholder的颜色
+  &:-moz-placeholder { color: $defaultFormPlaceholderColor };
+  &::-webkit-input-placeholder { color: $defaultFormPlaceholderColor };
+}
+
+select {
+  width: $defaultFormNonNormalInputWidth;
+  height: $defaultFormNonNormalInputHeight;
+  font-size: $defaultFormFontSize;
+
+  // 让多选菜单的菜单项高度自适应
+  &[multiple],
+  &[size] {
+    height: auto;
+  }
+
+  &.multiple,
+  &.size {
+    *margin-top: 0px;
+    *vertical-align: middle;
+  }
+
+  // IE7下虽然显示的是22px的高度，但是实际还是占据了指定的高度
+  *height: auto;
+
+  // HACK IE67 由于select无法设置高度，因此使用margin-top和margin-bottom来模拟高度
+  *vertical-align: top;
+  *margin-top: verticalAlignTop(22px,null);
+  *margin-bottom: verticalAlignTop(22px,null);
+}
+
+// 让Textarea的高度自适应
+textarea,
+.uneditable-textarea {
+  height: auto;
+}
+
+// 为input和textarea添加默认的阴影&动画
+input,
+textarea {
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  @include transition(border linear .2s, box-shadow linear .2s);
+}
+
+
+// Input 的各种类型
+// ---------------
+
+input {
+
+  &[type="checkbox"],
+  &[type="radio"],
+  &[type="image"] // type=image 是button的一种，用于提交，只是显示为一张图片
+  {
+    width: auto;
+    height: auto;
+    padding: 0;
+    line-height: normal;
+    cursor: pointer;
+    background-color: transparent;
+    @include border-radius(0);
+    border: none;
+
+    // HACK IE IE 6 + 7, 使用margin-top和margin-bottom来将radio和checkbox模拟成正常高度的input
+    *vertical-align: top;
+    *margin-top: verticalAlignTop(20px, null);
+    *margin-bottom: verticalAlignTop(20px, null);
+  }
+
+  // FOR IE6
+  &.checkbox,
+  &.radio,
+  &.image {
+    width: auto;
+    height: auto;
+    padding: 0;
+    line-height: normal;
+    cursor: pointer;
+    @include border-radius(0);
+    border: none;
+
+    *vertical-align: top;
+    *margin-top: verticalAlignTop(20px, null);
+    *margin-bottom: verticalAlignTop(20px, null);
+  }
+
+  // 文件类型
+  &[type="file"] {
+    width: $defaultFormNonNormalInputWidth;
+    height: $defaultFormNonNormalInputHeight;
+    padding: initial;
+    line-height: $defaultFormNonNormalInputHeight;
+    background-color: initial;
+    border: initial;
+    @include box-shadow(none);
+  }
+  // FOR IE6
+  &.file {
+    width: $defaultFormNonNormalInputWidth;
+    height: $defaultFormNonNormalInputHeight;
+    padding: initial;
+    line-height: $defaultFormNonNormalInputHeight;
+    background-color: initial;
+    border: initial;
+    @include box-shadow(none);
+  }
+
+  // 按钮类型
+  &[type="button"],
+  &[type="reset"],
+  &[type="submit"] {
+    width: auto;
+    height: auto;
+  }
+  // FOR IE6
+  &.button,
+  &.reset,
+  &.submit {
+    width: auto;
+    height: auto;
+  }
+
+  &[type="hidden"] {
+    display: none;
+  }
+  // FOR IE6
+  &.hidden {
+    display: none;
+  }
+}
+
+// FOCUS 状态
+// -----------
+
+input:focus,
+input.focus,
+textarea:focus,
+textarea.focus {
+  border-color: rgba(82,168,236,.8);
+  outline: 0;
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(82,168,236,.6));
+
+  // HACK IE9-
+  outline: thin dotted \9;
+}
+
+// 这里由于使用的是CSS3的效果因此也就不考虑低级浏览器了
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus,
+select:focus {
+  @include webkit-style-focus();
+  @include box-shadow(none); // override for file inputs
+}
+
+// DISABLED 状态
+// --------------
+
+// Disabled and read-only inputs
+input[disabled],
+select[disabled],
+textarea[disabled],
+input[readonly],
+select[readonly],
+textarea[readonly] {
+  cursor: not-allowed;
+  background-color: $defaultFormInputDisabledBgColor;
+  border-color: #ddd;
+}
+// FOR IE6
+input.disabled,
+select.disabled,
+textarea.disabled,
+input.readonly,
+select.readonly,
+textarea.readonly {
+  cursor: not-allowed;
+  background-color: $defaultFormInputDisabledBgColor;
+  border-color: #ddd;
+}
+
+// Explicitly reset the colors here
+input {
+  &[type="radio"][disabled],
+  &[type="checkbox"][disabled],
+  &[type="radio"][readonly],
+  &[type="checkbox"][readonly]  {
+    background-color: transparent;
+  }
+}
+
+// 表单元素在label中的状态
+// ---------------------
+
+label {
+
+  line-height: $defaultFormNonNormalInputHeight;
+
+  // 当表单元素在label中时，注意到没有button，因为button作为action，不需要label
+  input,
+  textarea,
+  select {
+    display: block;
+  }
+
+  // 在IE67下设置会middle，使得select和text垂直居中
+  select {
+    *vertical-align: middle;
+  }
+
+  // 让内部的input[checkbox]和[raido]浮动到label的left padding中
+  &.radio,
+  &.checkbox {
+    @include clearfix();
+    // clear the floating input if there is no label text
+    min-height: $defaultFormElementHeight;
+    padding-left: 1px;
+
+    // 让checkbox和radio的选框位置放到padding-left中
+    input {
+      &[type="radio"],
+      &[type="checkbox"] {
+        @include ocp-inline-block(middle);
+        margin-right: 5px;
+        margin-bottom: 0;
+
+        // HACK IE67
+        *margin-bottom: verticalAlignTop( 20px, null );
+      }
+      // FOR IE6
+      &.radio,
+      &.checkbox {
+        @include ocp-inline-block(middle);
+        margin-right: 5px;
+        margin-bottom: 0;
+
+        // HACK IE67
+        *margin-bottom: verticalAlignTop( 20px, null );
+      }
+    }
+  }
+
+  // 多个lable在同行
+  &.inline {
+    @include ocp-inline-block(middle);
+    margin-bottom: 0;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+}
+
+// 其他功能元素
+// ------
+
+// Form action. 用来放按钮啊之类的容器
+
+.form-actions {
+  padding: $defaultFormLineHeight 20px $defaultFormLineHeight;
+  margin-top: $defaultFormLineHeight;
+  margin-bottom: $defaultFormLineHeight;
+  background-color: $defaultFormActionBgColor;
+  border-top: 1px solid #ddd;
+}
+
+// For text that needs to appear as an input/textarea but should not be an input
+.uneditable-textarea,
+.uneditable-input {
+  // prevent text from wrapping, but still cut it off like an input does
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: not-allowed;
+  background-color: $defaultFormInputDisabledBgColor;
+  border-color: #DDD;
+  @include box-shadow(inset 0 1px 2px rgba(0,0,0,.025));
+}
+.uneditable-textarea {
+  white-space: normal;
+}
+
+// 在表单周围的附加文字
+.help-block,
+.help-inline {
+  color: $defaultFormHelpTextColor; // lighten the text some for contrast
+}
+
+.help-block {
+  display: block; // account for any element using help-block
+  margin-bottom: $defaultFormElementMarginBottom;
+}
+
+.help-inline {
+  @include ocp-inline-block(middle);
+  padding-left: 5px;
+  // 考虑到放置在他旁边的表单元素都有bottom，因此它也必须要有bottom，否则就不完全居中了
+  margin-bottom: $defaultFormElementMarginBottom;
+}
+
+// HORIZONTAL & VERTICAL FORMS 水平和竖直表单布局
+// -------------------------------------------
+
+// 通用样式
+.form-inline,
+.form-horizontal {
+
+  input,
+  textarea,
+  button,
+  select,
+  .help-inline,
+  .uneditable-input {
+    @include ocp-inline-block(middle);
+    margin-bottom: 0;
+  }
+
+  // IE67下必须伪装成正常的高度
+  select {
+    *margin-bottom: verticalAlignTop(22px, null);
+
+    // 但是multiple类型的保持正常就行了
+    &[multiple],
+    &[size] {
+      *margin-bottom: 0;
+    }
+
+    &.multiple,
+    &.size {
+      *margin-bottom: 0;
+    }
+  }
+
+  input {
+    &[type="radio"],
+    &[type="checkbox"] {
+      *margin-bottom: verticalAlignTop(20px, null);
+    }
+
+    &.radio,
+    &.checkbox {
+      *margin-bottom: verticalAlignTop(20px, null);
+    }
+  }
+  // Re-hide hidden elements due to specifity
+  .hide {
+    display: none;
+  }
+
+  // Margin to space out fieldsets
+  .control-group {
+    margin-bottom: $defaultFormElementMarginBottom;
+  }
+}
+
+// Inline Form
+.form-inline {
+
+  label {
+    @include ocp-inline-block(middle);
+    margin-bottom: 0;
+
+    &.radio,
+    &.checkbox {
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    &.radio input[type="radio"],
+    &.checkbox input[type="checkbox"] {
+      //float: left;
+      // 作为多个元素的间隔
+      margin-right: 3px;
+    }
+
+    // FOR IE6
+    &.radio input.radio,
+    &.checkbox input.checkbox {
+      //float: left;
+      margin-right: 3px;
+    }
+  }
+}
+
+// Horizontal form
+
+.form-horizontal {
+  // Increase spacing between groups
+  .control-group {
+    // 在webkit下，由于vertical-align的关系，导致下面的input会太上面，然后部分被overflow:hidden掉
+    // 可以统一添加2px的top，来显示完整
+    padding-top: 2px;
+    margin-bottom: $defaultFormLineHeight;
+    @include clearfix();
+  }
+  // Float the labels left
+  .control-label {
+    float: left;
+    width: $defaultFormControlLabelWidth;
+    line-height: $defaultFormNonNormalInputHeight;
+    text-align: right;
+  }
+  // Move over all input controls and content
+  .controls {
+    margin-left: $defaultFormControlLabelWidth;
+    padding-left: $defaultFormControlGroupGap;
+
+    label {
+      line-height: $defaultFormNonNormalInputHeight;
+    }
+  }
+
+  // Remove bottom margin on block level help text since that's accounted for on .control-group
+  .help-block {
+    margin-top: $defaultFormElementMarginBottom;
+    margin-bottom: 0;
+  }
+
+  // Move over buttons in .form-actions to align with .controls
+  .form-actions {
+    padding-left: $defaultFormControlLabelWidth + $defaultFormControlGroupGap;
+  }
+}
+
+// Grid for horizontal-form 调整control-label的宽度 & control-label和controls的间隔
+@for $controlLabelWidth from 1 through 7 {
+
+  .label-width#{$controlLabelWidth} {
+    .control-label {
+      width: $controlLabelWidth * 10%;
+    }
+    .controls {
+      margin-left: $controlLabelWidth * 10%;
+    }
+  }
+}
+
+// 增加样式层级，实现control-group中的label-width#覆盖form中制定的宽度
+.form-horizontal {
+  @for $controlLabelWidth from 1 through 7 {
+    .label-width#{$controlLabelWidth} {
+      .control-label {
+        width: $controlLabelWidth * 10%;
+      }
+      .controls {
+        margin-left: $controlLabelWidth * 10%;
+      }
+    }
+  }
+}
+
+// Grid for inputs
+// 单纯用于设定百分比宽度的通用样式，此处重复定义是为了提高CSS权重
+// -------------------------------------------------------
+
+@for $spanWidth from 1 through 10 {
+  .span#{$spanWidth} {
+    width: $spanWidth * 10%;
+  }
+}

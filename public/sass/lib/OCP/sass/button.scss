@@ -1,0 +1,44 @@
+@import "class/button";
+
+// 按钮的尺寸
+// ----------------------------------------------------
+
+$buttonSize: small large mini default;
+
+// 按钮的样式
+// ----------------------------------------------------
+
+$buttonStyle: emphasize default disabled primary;
+
+// 组合按钮样式和尺寸
+// ----------------------------------------------------
+
+@each $size in $buttonSize {
+
+  @each $style in $buttonStyle {
+
+    $selector: 'btn';
+    @if $size != default {
+      $selector: ( $selector + '-' + $size );
+    }
+    @if $style != default {
+      $selector: ( $selector + '-' + $style );
+    }
+
+    .#{$selector} {
+      @if $size == default {
+        @extend %btn-common;
+      }
+      @else {
+        @extend %btn-#{$size};
+      }
+
+      @if $style == default {
+        @extend %btn-default;
+      }
+      @else {
+        @extend %btn-#{$style};
+      }
+    }
+  }
+}

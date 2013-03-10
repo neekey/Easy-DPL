@@ -1,0 +1,86 @@
+/* line 37, ../sass/class/_table.scss */
+.table {
+  max-width: 100%;
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 13px;
+  caption-side: top; }
+  /* line 46, ../sass/class/_table.scss */
+  .table caption {
+    line-height: 18px;
+    margin-bottom: 18px;
+    *padding-bottom: 18px; }
+  /* line 56, ../sass/class/_table.scss */
+  .table th,
+  .table td {
+    padding: 8px;
+    line-height: 18px;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #dddddd; }
+  /* line 65, ../sass/class/_table.scss */
+  .table th {
+    font-weight: bold;
+    line-height: 13px; }
+  /* line 71, ../sass/class/_table.scss */
+  .table thead th {
+    vertical-align: bottom; }
+  /* line 81, ../sass/class/_table.scss */
+  .table tfoot td {
+    font-weight: bold;
+    line-height: 13px;
+    background-color: #f4f4f4; }
+  /* line 88, ../sass/class/_table.scss */
+  .table .colord, .table tr.sub-header {
+    background-color: #f2f2f2; }
+  /* line 96, ../sass/class/_table.scss */
+  .table tr.sub-header td {
+    padding: 5px; }
+  /* line 102, ../sass/class/_table.scss */
+  .table tr.sub-separate {
+    height: 5px; }
+    /* line 106, ../sass/class/_table.scss */
+    .table tr.sub-separate td,
+    .table tr.sub-separate th {
+      padding: 0px;
+      margin: 0px;
+      border-left: none;
+      border-right: none;
+      height: 5px; }
+    /* line 117, ../sass/class/_table.scss */
+    .table tr.sub-separate:last-child td, .table tr.sub-separate:last-child th {
+      border-bottom: none; }
+    /* line 122, ../sass/class/_table.scss */
+    .table tr.sub-separate:first-child td, .table tr.sub-separate:first-child th {
+      border-top: none; }
+
+/* line 134, ../sass/class/_table.scss */
+.table-layout-fixed {
+  table-layout: fixed; }
+
+/* line 147, ../sass/class/_table.scss */
+.table-hover:hover tbody tr:hover td,
+.table-hover:hover tbody tr:hover th {
+  background-color: #f2f2f2; }
+
+/* line 160, ../sass/class/_table.scss */
+.table-striped tbody tr:nth-child(odd) td,
+.table-striped tbody tr:nth-child(odd) th {
+  background-color: #f2f2f2; }
+
+/* line 172, ../sass/class/_table.scss */
+.table-opened th, .table-opened td {
+  border: none;
+    border-top: 1px solid #dddddd; }
+
+/* line 184, ../sass/class/_table.scss */
+.table thead.table-style-header th {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(50%, #ffffff), color-stop(51%, #f4f4f4), color-stop(100%, #fcfcfc));
+  background-image: -webkit-linear-gradient(top, #ffffff 50%, #f4f4f4 51%, #fcfcfc 100%);
+  background-image: -moz-linear-gradient(top, #ffffff 50%, #f4f4f4 51%, #fcfcfc 100%);
+  background-image: -o-linear-gradient(top, #ffffff 50%, #f4f4f4 51%, #fcfcfc 100%);
+  background-image: linear-gradient(top, #ffffff 50%, #f4f4f4 51%, #fcfcfc 100%);
+  *filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFFFFFFF', endColorstr='#FFF4F4F4');
+  background-color: #fcfcfc; }

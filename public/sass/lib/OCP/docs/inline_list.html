@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>OCP - Inline list</title>
+    <link rel="stylesheet" type="text/css" href="assets/tbreset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/ocp.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/common.css" media="all">
+    <link rel="stylesheet" href="assets/highlight/rainbow.min.css">
+</head>
+<body>
+<div class="description">
+    <h2>Inline list</h2>
+    <p>行内列表</p>
+    <p>兼容性：IE6+</p>
+    <p>最佳实践：</p>
+<pre class="J_Snap">
+<ul class="inline-list">
+    <li><a href="#">小链接</a>|</li>
+    <li><a href="#">小链接</a>|</li>
+    ...
+</ul>
+</pre>
+</div>
+<div class="section">
+    <div class="block">
+        <h4>文字链接</h4>
+        <ul class=" inline-list">
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li><li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a></li>
+        </ul>
+    </div>
+    <div class="block">
+        <h4>按钮列表</h4>
+        <ul class=" inline-list">
+            <li><a class="btn" href="#">小链接</a>|</li>
+            <li><a class="btn" href="#">小链接</a>|</li>
+            <li><a class="btn" href="#">小链接</a>|</li>
+            <li><a class="btn" href="#">小链接</a>|</li>
+            <li><a class="btn" href="#">小链接</a></li>
+        </ul>
+    </div>
+    <div class="block">
+        <h4>按钮&文字 - 混合</h4>
+        <p>当高度不同的单元组合在一起时，会出现高度不一致的情况，建议手动调整高度对齐（为<code>li</code>添加<code>margin-top</code>)</p>
+        <ul class="inline-list">
+            <li><a class="btn" href="#">小链接</a>|</li>
+            <li><a class="btn" href="#">小链接</a>|</li>
+            <li><a class="btn" href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a>|</li>
+            <li><a href="#">小链接</a></li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script type="text/javascript" src="assets/snap.js"></script>
+<script src="assets/highlight/highlight.min.js"></script>
+<script type="text/javascript">
+
+    // 初始化highlight
+    hljs.initHighlightingOnLoad();
+
+</script>
+</body>
+</html>

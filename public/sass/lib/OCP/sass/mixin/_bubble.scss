@@ -1,0 +1,127 @@
+// 自定义Bubble样式，所有参数都可选，只有给定了参数才额外添加，否则继承子 `class/bubble`中定义的类
+// 注意：箭头宽度和边框宽度如果给出，需要同时给出（因为计算需要啦）
+// 建议使用 key-value 的方式传参.
+// @depends class/bubble
+// @param $bgColor 背景色
+// @param $bdColor 边框颜色
+// @param $arrowWidth 箭头宽度
+// @param $bdWidth 边框宽度
+// -------------------------------------------------------------------
+
+@mixin bubble-style( $bgColor: null, $bdColor: null, $arrowWidth: null, $bdWidth: null ){
+
+  @extend %bubble-common;
+
+  // 默认的位置（箭头宽度的倍数）
+  $defaultArrowPosRadio: 1.2;
+
+  @if $bgColor != null {
+    background-color: $bgColor;
+  }
+
+  @if $bdColor != null {
+    border-color: $bdColor;
+  }
+
+  @if $bdWidth != null {
+    border-width: $bdWidth;
+  }
+
+  // 若需要设置箭头样式
+  // $bdWidth 和 $arrowWidth 应该是需要同时给出滴
+  @if $bgColor != null or $bdWidth != null and $arrowWidth != null {
+
+    // 遍历四个方向的箭头
+    @each $dir in top bottom left right {
+
+
+      // 外层箭头
+      .arrow-#{$dir} {
+        @extend %arrow-#{$dir};
+
+        @include arrowStyle( $dir, $bgColor, $bdColor,  $arrowWidth, $bdWidth );
+      }
+    }
+  }
+}
+
+// 设置箭头样式
+// 建议使用 key-value 的方式传参.
+// @param $dir 箭头方向
+// @param $bgColor 背景色
+// @param $bdColor 边框颜色
+// @param $width 箭头宽度
+// @param $bdWidth 边框宽度
+// -----------------------------------------------------------
+
+@mixin arrowStyle( $dir, $bgColor, $bdColor, $width, $bdWidth ){
+
+  $defaultArrowPosRadio: 1.2;
+
+  $opDir: opposite-position($dir);
+
+  // 背景色
+  @if $bdColor != null {
+    *border-#{$opDir}-color: $bdColor;
+  }
+
+  // 设置箭头位置以及外层箭头的宽度
+  @if $bdWidth != null and $width != null {
+
+    border-width: $width + $bdWidth;
+
+    @if( $dir == top ){
+      top: -($width + $bdWidth) * 2;
+      left: $width * $defaultArrowPosRadio;
+    }
+    @if( $dir == bottom ){
+      bottom: -($width + $bdWidth) * 2;
+      // IE6 有1px的差别，和bdWidth无关
+      _bottom: -($width + $bdWidth) * 2 - 1;
+      left: $width * $defaultArrowPosRadio;
+    }
+    @if( $dir == left ){
+      left: -($width + $bdWidth) * 2;
+      top: $width * $defaultArrowPosRadio;
+    }
+    @if( $dir == right ){
+      right: -($width + $bdWidth) * 2;
+      top: $width * $defaultArrowPosRadio;
+    }
+  }
+
+  // 内部箭头
+  @if $bgColor != null or $bdWidth != null or $width != null {
+    i {
+
+      @if $width != null and $bdWidth {
+
+        // 设置箭头宽度
+        border-width: $width;
+
+        // 设置位置
+        @if( $dir == top ){
+          top: - $width + $bdWidth;
+          left: - $width;
+        }
+        @if( $dir == bottom ){
+          top: - $width - $bdWidth;
+          left: - $width;
+        }
+        @if( $dir == left ){
+          left: - $width + $bdWidth;
+          top: - $width;
+        }
+        @if( $dir == right ){
+          left: - $width - $bdWidth;;
+          top: - $width;
+        }
+      }
+
+      // 如果还需要修改背景色
+      @if $bgColor != null {
+        border-#{$opDir}-color: $bgColor;
+      }
+    }
+  }
+}

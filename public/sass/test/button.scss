@@ -1,0 +1,70 @@
+@import "../lib/mods/button/class";
+
+
+@include setDefaultButtonClass( default-button );
+
+@include newButtonType( default ){
+  @include setButtonBg(red, true);
+  color: white;
+  &:hover {
+    @include setButtonBg(#ff870a, true);
+  }
+}
+
+@include newButtonType(primary){
+  @include setButtonBg(green, true);
+  color: white;
+  &:hover {
+    @include setButtonBg(#20d024, true);
+  }
+}
+
+@include newButtonType(emphasize){
+  @include setButtonBg(#126dff, true);
+  color: white;
+  &:hover {
+    @include setButtonBg(#24a3ff, true);
+  }
+}
+
+@include newButtonSize(default){
+  font-size: 12px;
+  line-height: 12px;
+}
+
+@include newButtonSize(big){
+  font-size: 18px;
+  line-height: 18px;
+}
+
+@include newButtonSize(large){
+  font-size: 24px;
+  line-height: 24px;
+}
+
+.btn {
+  @include applyButtonStyle(){
+    @include setButtonBg(#666, true);
+    color: white;
+    &:hover {
+      @include setButtonBg(#999, true);
+    }
+  }
+}
+
+.btn-gradient {
+  @include applyButtonStyle(){
+    @include setButtonBg(#eee, #ccc, true);
+    color: #333;
+    &:hover {
+      @include setButtonBg(#ccc, #999, true);
+    }
+  }
+}
+
+.custom-btn {
+  @include applyButtonStyle(){
+  }
+}
+
+@include outputAllButtons();

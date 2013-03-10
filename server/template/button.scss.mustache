@@ -1,0 +1,62 @@
+@import "{{{sassBase}}}/lib/mods/button/class";
+
+{{! 设置所有Button默认样式}}
+{{#base}}
+@include setButtonForAll(){
+    {{#mixins}}
+    @include {{{name}}}({{{ value}}});
+    {{/mixins}}
+    {{{scss}}}
+}
+{{/base}}
+
+{{! 设置默认按钮的Class}}
+{{#baseClass}}
+@include setDefaultButtonClass({{{baseClass}}});
+{{/baseClass}}
+
+{{! 添加按钮类型}}
+{{#types}}
+@include newButtonType({{{name}}}){
+    {{#content.mixins}}
+    @include {{{name}}}({{{ value}}});
+    {{/content.mixins}}
+    {{{content.scss}}}
+}
+{{/types}}
+
+{{! 添加按钮尺寸}}
+{{#sizes}}
+@include newButtonSize({{{name}}}){
+    {{#content.mixins}}
+    @include {{{name}}}({{{ value}}});
+    {{/content.mixins}}
+    {{{content.scss}}}
+}
+{{/sizes}}
+
+{{! 添加自定义按钮}}
+{{#customs}}
+{{{selector}}} {
+    @include applyButtonStyle(){
+        {{! 应用指定的按钮类型}}
+        {{#type}}
+        @include applyButtonType({{{type}}});
+        {{/type}}
+        {{! 应用指定的按钮尺寸}}
+        {{#size}}
+        @include applyButtonSize({{{size}}});
+        {{/size}}
+        {{! 应用按钮的自定义SCSS}}
+        {{#content}}
+        {{#mixins}}
+        @include {{{name}}}({{{ value}}});
+        {{/mixins}}
+        {{{scss}}}
+        {{/content}}
+    }
+}
+{{/customs}}
+{{! 输出所有的按钮组合样式}}
+@include outputAllButtons();
+

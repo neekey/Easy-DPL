@@ -1,0 +1,42 @@
+@import "class/table";
+
+// Default Table
+// ----------------------
+
+.table {
+  @extend %table-common;
+}
+
+// Table with hover
+// IE7+
+// @depends .table
+// ----------------------
+
+.table-hover {
+  @extend %table-hover;
+}
+
+// 表格行背景色变换
+// IE9+
+// @depends .table
+// ----------------
+
+.table-striped {
+  @extend %table-striped;
+}
+
+// 去掉竖向的border
+// @depends .table
+// ----------------
+
+.table-opened {
+  @extend %table-opened;
+}
+
+// 使用固定布局
+// @depends .table
+// ----------------
+
+.table-layout-fixed {
+  @extend %table-layout-fixed;
+}

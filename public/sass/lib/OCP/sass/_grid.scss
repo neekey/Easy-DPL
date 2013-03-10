@@ -1,0 +1,9 @@
+// Grid System
+// -----------
+
+// Span 单纯用于设定百分比宽度的通用样式
+@for $spanWidth from 1 through 10 {
+  .span#{$spanWidth} {
+    width: $spanWidth * 10%;
+  }
+}

@@ -1,0 +1,53 @@
+@import "class/alert";
+
+// 警告颜色
+$ocpAlertWarningBackground: #ffffe5;
+$ocpAlertWarningBorder: #ffcc7f;
+// 成功颜色
+$ocpAlertSuccessBackground: #f0ffe5;
+$ocpAlertSuccessBorder: #4dbf00;
+// 错误颜色
+$ocpAlertErrorBackground: #fff3f3;
+$ocpAlertErrorBorder: #ff8080;
+// 信息颜色
+$ocpAlertInfoBackground: #e6f5ff;
+$ocpAlertInfoBorder: #40b3ff;
+// 疑问颜色
+$ocpAlertQuestionBackground: #f2f2f2;
+$ocpAlertQuestionBorder: #bfbfbf;
+
+
+// 默认 Warnning
+.alert {
+  @extend .alert-warning;
+}
+
+.alert-warning {
+  @extend %alert-common;
+  background-color: $ocpAlertWarningBackground;
+  border: 1px solid $ocpAlertWarningBorder;
+}
+
+.alert-success {
+  @extend %alert-common;
+  background-color: $ocpAlertSuccessBackground;
+  border: 1px solid $ocpAlertSuccessBorder;
+}
+
+.alert-info {
+  @extend %alert-common;
+  background-color: $ocpAlertInfoBackground;
+  border: 1px solid $ocpAlertInfoBorder;
+}
+
+.alert-error {
+  @extend %alert-common;
+  background-color: $ocpAlertErrorBackground;
+  border: 1px solid $ocpAlertErrorBorder;
+}
+
+.alert-question {
+  @extend %alert-common;
+  background-color: $ocpAlertQuestionBackground;
+  border: 1px solid $ocpAlertQuestionBorder;
+}

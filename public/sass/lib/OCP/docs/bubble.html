@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>OCP - Bubble</title>
+    <link rel="stylesheet" type="text/css" href="assets/tbreset.css" media="all">
+    <link rel="stylesheet" type="text/css" href="../css/ocp.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/common.css" media="all">
+    <link rel="stylesheet" href="assets/highlight/rainbow.min.css">
+    <style type="text/css">
+        li div {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="description">
+    <h2>Bubble</h2>
+    <p>按钮组件，根据下面样式对应的类名使用即可。</p>
+    <p>兼容性：IE6+ </p>
+    <p>最佳实践：
+<!-- snap -->
+<pre class="J_Snap">
+    <div class="bubble">
+        <!-- 箭头，通过arrow-top, arrow-left, arrow-right, arrow-bottom来设置箭头方向 -->
+        <span class="arrow-top"><i></i></span>
+    </div>
+</pre>
+<!-- snap END-->
+    设置<code>.arrow-top</code>等箭头节点的<code>top/right/bottom/left</code>来调整箭头的位置
+</p>
+</div>
+<div class="section">
+    <h3>&lt;div&gt;</h3>
+    <!--Default-->
+    <div class="block">
+        <h4>1px border</h4>
+        <ul>
+            <li><code>.bubble</code> with <code>.arrow-top</code><div class="bubble">这是一个bubble<span class="arrow-top"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-right</code><div class="bubble">这是一个bubble<span class="arrow-right"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-bottom</code><div class="bubble">这是一个bubble<span class="arrow-bottom"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-left</code><div class="bubble">这是一个bubble<span class="arrow-left"><i></i></span></div></li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h4>5px border</h4>
+        <ul>
+            <li><code>.bubble</code> with <code>.arrow-top</code><div class="bubble-3b">这是一个bubble<span class="arrow-top"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-right</code><div class="bubble-3b">这是一个bubble<span class="arrow-right"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-bottom</code><div class="bubble-3b">这是一个bubble<span class="arrow-bottom"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-left</code><div class="bubble-3b">这是一个bubble<span class="arrow-left"><i></i></span></div></li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h4>1px border</h4>
+        <ul>
+            <li><code>.bubble</code> with <code>.arrow-top</code><div class="bubble-grey">这是一个bubble<span class="arrow-top"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-right</code><div class="bubble-grey">这是一个bubble<span class="arrow-right"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-bottom</code><div class="bubble-grey">这是一个bubble<span class="arrow-bottom"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-left</code><div class="bubble-grey">这是一个bubble<span class="arrow-left"><i></i></span></div></li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <h4>1px border</h4>
+        <ul>
+            <li><code>.bubble</code> with <code>.arrow-top</code><div class="bubble-grey-3b">这是一个bubble<span class="arrow-top"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-right</code><div class="bubble-grey-3b">这是一个bubble<span class="arrow-right"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-bottom</code><div class="bubble-grey-3b">这是一个bubble<span class="arrow-bottom"><i></i></span></div></li>
+            <li><code>.bubble</code> with <code>.arrow-left</code><div class="bubble-grey-3b">这是一个bubble<span class="arrow-left"><i></i></span></div></li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy-min.js"></script>
+<script type="text/javascript" src="assets/snap.js"></script>
+<script src="assets/highlight/highlight.min.js"></script>
+<script type="text/javascript">
+
+    // 初始化highlight
+    hljs.initHighlightingOnLoad();
+
+</script>
+</body>
+</html>

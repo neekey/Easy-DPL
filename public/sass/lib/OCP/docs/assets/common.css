@@ -1,0 +1,73 @@
+/* 当前模块描述 */
+.description {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+    .description h2 {
+        font-size: 4em;
+    }
+
+    .description p {
+        font-size: 13px;
+        margin-bottom: 10px;
+        font-weight: normal;
+        color: #666;
+    }
+
+/* 大块的内容区分 */
+.section {
+    padding: 20px;
+    overflow: hidden;
+    *zoom: 1;
+}
+
+    .section h3 {
+        font-size: 3em;
+        margin-bottom: 0.5em;
+    }
+
+/* 小块的内容区分 */
+.block {
+    margin-right: 20px;
+    margin-bottom: 40px;
+    padding: 15px;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px dashed #DDD;
+}
+
+    .block h4 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+        margin-left: -20px;
+    }
+
+    .block h5 {
+        font-size: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    .block p, li {
+        margin-bottom: 0.5em;
+    }
+
+/* snaps style */
+
+
+code {
+    color: white;
+    background: #989B9C;
+    padding: 3px;
+    border-radius: 3px;
+    margin: 0 5px 5px 0;
+    text-shadow: 1px 1px 1px #333;
+}
+
+pre code {
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 1px 1px 10px #999;
+    text-align: left;
+}

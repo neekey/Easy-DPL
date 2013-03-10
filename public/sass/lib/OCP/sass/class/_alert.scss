@@ -1,0 +1,24 @@
+@import "compass";
+@import "../variables";
+
+// OCP - ALERT STYLES
+// -------------
+
+// 变量
+// -------------
+
+// 引入全局变量
+$ocpAlertBaseLineHeight: $baseLineHeight;
+
+// 文字颜色，暂时使用inherit
+$ocpAlertTextColor: inherit;
+
+
+// Base Class
+// -----------------------------------------------
+
+%alert-common {
+  padding: 3px 5px 3px 5px;
+  line-height: $ocpAlertBaseLineHeight;
+  color: $ocpAlertTextColor;
+}

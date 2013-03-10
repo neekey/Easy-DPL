@@ -1,0 +1,29 @@
+@import "class/bubble";
+@import "mixin/bubble";
+
+// 气泡背景色
+$ocpBubbleBackgrondGray: #f2f2f2;
+
+// 气泡边框颜色
+$ocpBubbleBorderGray: #ddd;
+
+.bubble {
+  @extend %bubble-common;
+}
+
+.bubble-grey{
+  @include bubble-style( $bgColor: $ocpBubbleBackgrondGray, $bdColor: $ocpBubbleBorderGray );
+}
+
+// Only for test...
+// ------------------
+
+/*
+.bubble-grey-3b {
+  @include bubble-style( $bgColor: $ocpBubbleBackgrondGray, $bdColor: $ocpBubbleBorderGray, $arrowWidth: 6px, $bdWidth: 3px );
+}
+
+.bubble-3b {
+  @include bubble-style( $arrowWidth: 6px, $bdWidth: 5px );
+}
+*/

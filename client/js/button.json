@@ -1,0 +1,50 @@
+{
+    "base": {
+        "mixins": [
+            {
+                "name": "setButtonBg",
+                "value": "red, green"
+            }
+        ],
+        "scss": "color: red;"
+    },
+    "baseClass": "btn",
+    "types": [
+        {
+            "name": "default",
+            "content": {
+                "mixins": [
+                    {
+                        "name": "setButtonBg",
+                        "value": "red, blue, true"
+                    }
+                ],
+                "scss": "font-size: 12px;"
+            }
+        }
+    ],
+    "sizes": [
+        {
+            "name": "default",
+            "content": {
+                "scss": "font-size: 14px;"
+            }
+        }
+    ],
+    "customs": [
+        {
+            "selector": ".custom-button",
+            "type": "default",
+            "size": "default",
+            "content": {
+                "mixins": [
+                    {
+                        "name": "disableButtonBoxShadow",
+                        "value": ""
+                    }
+                ],
+                "scss": "line-height: 14px;"
+            }
+        }
+    ]
+}

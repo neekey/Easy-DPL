@@ -1,0 +1,17 @@
+@function listToString( $list, $separator: null, $decorator: null ){
+  $count: 0;
+  $len: length( $list );
+  $string: "";
+  @each $value in $list {
+    @if( $count == $len - 1 ){
+      $string: #{$string} #{$decorator}#{$value};
+    }
+    @else {
+      $string: #{$string} #{$decorator}#{$value}#{$separator};
+    }
+
+    $count: $count + 1;
+  }
+
+  @return $string;
+}

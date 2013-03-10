@@ -1,0 +1,28 @@
+// INLINE-LIST STYLES
+// ------------
+@import "compass";
+
+// 分隔符颜色
+$inlineListSeparatorColor: #E0DFDF;
+$inlineListItemGap: 5px;
+
+.inline-list {
+  margin-left: 0;
+  list-style: none;
+  // 若单个li过长，则隐藏它
+  @include clearfix();
+}
+
+.inline-list li {
+  color: $inlineListSeparatorColor;
+  padding-right: $inlineListItemGap;
+  float: left;
+
+  a {
+    margin-right: $inlineListItemGap;
+    white-space: nowrap;
+    word-wrap: break-word;
+    display: inline-block;
+  }
+}
+

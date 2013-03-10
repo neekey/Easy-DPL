@@ -1,0 +1,39 @@
+/* line 22, ../sass/class/_overlay.scss */
+.overlay,
+.dialog {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  border: 1px solid #a3c7c7;
+  padding: 20px;
+  background-color: #e6f2ff;
+  box-shadow: 5px 5px 5px #555; }
+  /* line 31, ../sass/class/_overlay.scss */
+  .overlay .close,
+  .dialog .close {
+    margin: 0;
+    height: 16px;
+    width: 16px;
+    border: 1px solid transparent;
+    right: 6px;
+    top: 6px;
+    position: absolute;
+    text-decoration: none;
+    outline: none;
+    border-color: transparent;
+    _border-color: tomato;
+    _filter: chroma(color=tomato);
+    overflow: hidden;
+    cursor: pointer; }
+    /* line 45, ../sass/class/_overlay.scss */
+    .overlay .close:hover,
+    .dialog .close:hover {
+      border: 1px solid #CED5E0;
+      background: white; }
+
+/* line 52, ../sass/class/_overlay.scss */
+.overlay-mask,
+.ks-ext-mask {
+  background-color: black;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
+  opacity: 0.3; }

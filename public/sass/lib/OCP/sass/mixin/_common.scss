@@ -1,0 +1,29 @@
+// Webkit-style focus
+// ------------------
+@mixin webkit-style-focus() {
+  // Default
+  outline: thin dotted #333;
+  // Webkit
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+// 设置颜色透明，主要针对IE6不能设置透明色
+// @param {String} attr 属性值
+// ------------------------------------------------
+
+@mixin transparentColor( $attr ){
+  #{$attr}: transparent;
+  // IE6下border颜色透明，chroma使得某个颜色透明
+  _#{$attr}: tomato;
+  _filter: chroma(color=tomato);
+}
+
+@mixin clear-filter-gradient(){
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+@mixin ocp-inline-block($align){
+  @include inline-block($align);
+  *vertical-align: $align;
+}

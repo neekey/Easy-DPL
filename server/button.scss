@@ -1,0 +1,28 @@
+@import "/lib/mods/button/class";
+
+@include setButtonForAll(){
+    @include setButtonBg(red, green);
+    color: red;
+}
+
+@include setDefaultButtonClass(btn);
+
+@include newButtonType(default){
+    @include setButtonBg(red, blue, true);
+    font-size: 12px;
+}
+
+@include newButtonSize(default){
+    font-size: 14px;
+}
+
+.custom-button {
+    @include applyButtonStyle(){
+        @include applyButtonType(default);
+        @include applyButtonSize(default);
+        @include disableButtonBoxShadow();
+        line-height: 14px;
+    }
+}
+@include outputAllButtons();
+
