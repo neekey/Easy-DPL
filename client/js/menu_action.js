@@ -2,6 +2,7 @@
 
     var ACTION_FORM_DATA = App.Config.JSON.actionForm;
     var SASS_DATA = App.Data.SASS;
+    var Utils = App.Utils;
 
     Meteor.startup(function(){
         // 默认添加 类名设置和全局样式设置
@@ -14,7 +15,18 @@
 
         'click .J_ButtonActionTrigger': function( e ){
             var trigger = $( e.currentTarget );
-            addActionForm( trigger.attr( 'data-type' ) );
+            var dataType = trigger.attr( 'data-type' );
+            var inputs = trigger.siblings( 'input' );
+            var haveRenderData = inputs.length > 0;
+            var renderData = haveRenderData ? {} : null;
+
+            inputs.each(function( index, input ){
+                var ipt = $( input );
+                var key = ipt.attr( 'data-var' );
+                renderData[ key ] = ipt.val();
+            });
+
+            addActionForm( dataType, renderData );
         }
     });
 
@@ -41,9 +53,13 @@
         return data;
     }
 
-    function addActionForm( type ){
+    function addActionForm( type, renderData ){
         var data = ACTION_FORM_DATA[ type ];
         if( data ){
+
+            if( renderData ){
+                data = Utils.substitute( data, renderData );
+            }
             data = actionFormDataHandle( type, data );
             $( '.J_ButtonOperateList').append( Template.buttonOperate( data ) )
         }

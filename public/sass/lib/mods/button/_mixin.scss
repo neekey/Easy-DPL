@@ -30,14 +30,16 @@
 
   $selector: listToString( $names, ",", $BUTTON_CLASS_SIZE_PREFIX );
 
-  #{$selector} {
-    @content;
-  }
+  @if $selector {
+    #{$selector} {
+      @content;
+    }
 
-  @each $name in $names {
+    @each $name in $names {
     // 不重复添加列表
-    @if index( $BUTTON_CLASS_SIZE_LIST, $name ) == false {
-      $BUTTON_CLASS_SIZE_LIST: append( $BUTTON_CLASS_SIZE_LIST, $name, space );
+      @if index( $BUTTON_CLASS_SIZE_LIST, $name ) == false {
+        $BUTTON_CLASS_SIZE_LIST: append( $BUTTON_CLASS_SIZE_LIST, $name, space );
+      }
     }
   }
 }
@@ -47,14 +49,16 @@
 
   $selector: listToString( $names, ",", $BUTTON_CLASS_STYLE_PREFIX );
 
-  #{$selector} {
-    @content;
-  }
+  @if $selector {
+    #{$selector} {
+      @content;
+    }
 
-  @each $name in $names {
+    @each $name in $names {
     // 不重复添加列表
-    @if index( $BUTTON_CLASS_STYLE_LIST, $name ) == false {
-      $BUTTON_CLASS_STYLE_LIST: append( $BUTTON_CLASS_STYLE_LIST, $name, space );
+      @if index( $BUTTON_CLASS_STYLE_LIST, $name ) == false {
+        $BUTTON_CLASS_STYLE_LIST: append( $BUTTON_CLASS_STYLE_LIST, $name, space );
+      }
     }
   }
 }

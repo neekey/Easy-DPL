@@ -1,7 +1,7 @@
 ED.Config.JSON.actionForm = {
 
     baseClass: {
-        "title": "设置自动组合的样式基础类名",
+        "title": "基础类名",
         "groups": [
             {
                 "label": "类名",
@@ -19,7 +19,7 @@ ED.Config.JSON.actionForm = {
         ]
     },
     base: {
-        "title": "设置按钮默认样式",
+        "title": "默认样式",
         "groups": [
             {
                 "label": "设置样式",
@@ -37,14 +37,14 @@ ED.Config.JSON.actionForm = {
         ]
     },
     types: {
-        "$index": null,
-        "title": "添加新的按钮类型",
+        "title": "按钮类型:{{name}}",
         "groups": [
             {
                 "label": "名称",
                 "control": {
                     "type": "input",
-                    "data-key": "types[index].name"
+                    "data-key": "types[index].name",
+                    "value": "{{name}}"
                 }
             },
             {
@@ -64,14 +64,14 @@ ED.Config.JSON.actionForm = {
         ]
     },
     sizes: {
-        "$index": null,
-        "title": "添加新的按钮尺寸",
+        "title": "按钮尺寸:{{name}}",
         "groups": [
             {
                 "label": "名称",
                 "control": {
                     "type": "input",
-                    "data-key": "sizes[index].name"
+                    "data-key": "sizes[index].name",
+                    "value": "{{name}}"
                 }
             },
             {
@@ -92,13 +92,14 @@ ED.Config.JSON.actionForm = {
     },
     customs: {
         "$index": null,
-        "title": "添加自定义按钮类",
+        "title": "自定义按钮类:{{selector}}",
         "groups": [
             {
                 "label": "类名",
                 "control": {
                     "type": "input",
-                    "data-key": "customs[index].selector"
+                    "data-key": "customs[index].selector",
+                    "value": "{{selector}}"
                 }
             },
             {

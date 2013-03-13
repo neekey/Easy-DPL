@@ -17,26 +17,31 @@
 
 {{! 添加按钮类型}}
 {{#types}}
+{{#name}}
 @include newButtonType({{{name}}}){
     {{#content.mixins}}
-    @include {{{name}}}({{{ value}}});
+        @include {{{name}}}({{{ value}}});
     {{/content.mixins}}
     {{{content.scss}}}
 }
+{{/name}}
 {{/types}}
 
 {{! 添加按钮尺寸}}
 {{#sizes}}
-@include newButtonSize({{{name}}}){
+{{#name}}
+    @include newButtonSize({{{name}}}){
     {{#content.mixins}}
-    @include {{{name}}}({{{ value}}});
+        @include {{{name}}}({{{ value}}});
     {{/content.mixins}}
     {{{content.scss}}}
-}
+    }
+{{/name}}
 {{/sizes}}
 
 {{! 添加自定义按钮}}
 {{#customs}}
+{{#selector}}
 {{{selector}}} {
     @include applyButtonStyle(){
         {{! 应用指定的按钮类型}}
@@ -56,6 +61,7 @@
         {{/content}}
     }
 }
+{{/selector}}
 {{/customs}}
 {{! 输出所有的按钮组合样式}}
 @include outputAllButtons();

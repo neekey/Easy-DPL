@@ -18,7 +18,7 @@ var Future = NodeModules.require('fibers/future'), wait = Future.wait;
             var randomDirname = String( Date.now() )+ String( Math.random()).replace( '.', '_' ) + '_tmp~';
             var randomSASSFile = randomDirname + '/' + type + '.scss';
             var randomOutputSASSFile = randomDirname + '/' + type + '.css';
-
+            console.log( output );
             FS.mkdirSync( randomDirname );
             FS.writeFileSync( randomSASSFile, output );
 
@@ -36,9 +36,9 @@ var Future = NodeModules.require('fibers/future'), wait = Future.wait;
                     }
                     else {
                         var compileOutput = FS.readFileSync( randomOutputSASSFile).toString();
-//                        FS.unlinkSync( randomSASSFile );
-//                        FS.unlinkSync( randomOutputSASSFile );
-//                        FS.rmdirSync( randomDirname );
+                        FS.unlinkSync( randomSASSFile );
+                        FS.unlinkSync( randomOutputSASSFile );
+                        FS.rmdirSync( randomDirname );
                         done( e, compileOutput );
                     }
                 });
