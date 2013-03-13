@@ -1,57 +1,15 @@
-(function(){
+(function( App ){
 
-    var buttonJSON = {
-        "base": {
-            "mixins": [
-                {
-                    "name": "setButtonBg",
-                    "value": "red, green"
-                }
-            ],
-            "scss": "color: red;"
-        },
-        "baseClass": "btn",
-        "types": [
-            {
-                "name": "default",
-                "content": {
-                    "mixins": [
-                        {
-                            "name": "setButtonBg",
-                            "value": "red, blue, true"
-                        }
-                    ],
-                    "scss": "font-size: 12px;"
-                }
-            }
-        ],
-        "sizes": [
-            {
-                "name": "default",
-                "content": {
-                    "scss": "font-size: 14px;"
-                }
-            }
-        ],
-        "customs": [
-            {
-                "selector": ".custom-button",
-                "type": "default",
-                "size": "default",
-                "content": {
-                    "mixins": [
-                        {
-                            "name": "disableButtonBoxShadow",
-                            "value": ""
-                        }
-                    ],
-                    "scss": "line-height: 14px;"
-                }
-            }
-        ]
-    };
+    var SASS_DATA = App.Data.SASS;
+    var data = SASS_DATA.find({});
 
-//    Meteor.call( 'compile', 'button', buttonJSON, function( ){
-//        console.log( 'comeback', arguments );
-//    });
-})();
+    data.observeChanges({
+        'changed': function( id, newObj ){
+            Meteor.call( 'compile', 'button', newObj.data, function( ){
+                console.log( 'comeback', arguments );
+            });
+        }
+    });
+
+
+})( ED );

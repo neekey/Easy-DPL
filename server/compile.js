@@ -36,9 +36,9 @@ var Future = NodeModules.require('fibers/future'), wait = Future.wait;
                     }
                     else {
                         var compileOutput = FS.readFileSync( randomOutputSASSFile).toString();
-                        FS.unlinkSync( randomSASSFile );
-                        FS.unlinkSync( randomOutputSASSFile );
-                        FS.rmdirSync( randomDirname );
+//                        FS.unlinkSync( randomSASSFile );
+//                        FS.unlinkSync( randomOutputSASSFile );
+//                        FS.rmdirSync( randomDirname );
                         done( e, compileOutput );
                     }
                 });

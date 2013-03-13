@@ -1,63 +1,59 @@
 <template name="buttonOperate">
-    <div class="accordion">
-        {{#each formData}}
-        <div class="accordion-group">
-            <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" href="#accordion-body-{{index}}">
-                    {{title}}
-                </a>
-            </div>
-            <form id="accordion-body-{{index}}" class="accordion-body button-operate-form form-horizontal collapse">
-                <div class="accordion-inner">
-                    {{#each groups}}
-                    <div class="control-group">
-                        <label class="control-label">{{label}}</label>
-                        <div class="controls">
-
-                            {{#with control}}
-                                {{#if equal type "input"}}
-                                <input type="text" value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}">
-                                {{/if}}
-
-                                {{#if equal type "textarea"}}
-                                <textarea  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}"></textarea>
-                                {{/if}}
-
-                                {{#if equal type "select"}}
-                                <select  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}">
-                                    {{#each options}}
-                                    <option value="{{value}}">{{text}}</option>
-                                    {{/each}}
-                                </select>
-                                {{/if}}
-
-                                {{#if equal type "checkbox"}}
-                                {{#each checkboxes}}
-                                <label class="checkbox"><input type="checkbox"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}">{{label}}</label>
-                                {{/each}}
-                                {{/if}}
-
-                                {{#if equal type "radio"}}
-                                {{#each radios}}
-                                <label>{{label}}<input type="radio"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}"></label>
-                                {{/each}}
-                                {{/if}}
-                            {{/with}}
-                        </div>
-                    </div>
-                    {{/each}}
-
-                    {{#if actions}}
-                    <div class="form-actions">
-                    {{#each actions}}
-                        <a href="#" value="{{value}}" name="{{name}}" class="{{class}} button-operate-action btn" value="{{value}}" id="{{id}}">{{text}}</a>
-                    {{/each}}
-                    </div>
-                    {{/if}}
-                </div>
-            </form>
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#accordion-body-{{random}}">
+                {{title}}
+            </a>
         </div>
-        {{/each}}
+        <form id="accordion-body-{{random}}" class="accordion-body button-operate-form form-horizontal collapse">
+            <div class="accordion-inner">
+                {{#each groups}}
+                <div class="control-group">
+                    <label class="control-label">{{label}}</label>
+                    <div class="controls">
+
+                        {{#with control}}
+                            {{#if equal type "input"}}
+                            <input type="text" value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" data-key="{{data-key}}" id="{{id}}">
+                            {{/if}}
+
+                            {{#if equal type "textarea"}}
+                            <textarea  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}"></textarea>
+                            {{/if}}
+
+                            {{#if equal type "select"}}
+                            <select  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}">
+                                {{#each options}}
+                                <option value="{{value}}">{{text}}</option>
+                                {{/each}}
+                            </select>
+                            {{/if}}
+
+                            {{#if equal type "checkbox"}}
+                            {{#each checkboxes}}
+                            <label class="checkbox"><input type="checkbox"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}">{{label}}</label>
+                            {{/each}}
+                            {{/if}}
+
+                            {{#if equal type "radio"}}
+                            {{#each radios}}
+                            <label>{{label}}<input type="radio"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}"></label>
+                            {{/each}}
+                            {{/if}}
+                        {{/with}}
+                    </div>
+                </div>
+                {{/each}}
+
+                {{#if actions}}
+                <div class="form-actions">
+                {{#each actions}}
+                    <a href="#" value="{{value}}" name="{{name}}" class="{{class}} button-operate-action btn" value="{{value}}" id="{{id}}" data-key="{{data-key}}">{{text}}</a>
+                {{/each}}
+                </div>
+                {{/if}}
+            </div>
+        </form>
     </div>
 </template>
 
