@@ -87,9 +87,6 @@
   $sizeList: $BUTTON_CLASS_SIZE_LIST;
   $styleList: $BUTTON_CLASS_STYLE_LIST;
 
-  @debug $sizeList;
-  @debug $styleList;
-
   @each $size in $sizeList {
     @each $style in $styleList {
 

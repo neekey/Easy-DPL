@@ -24,7 +24,7 @@ var Future = NodeModules.require('fibers/future'), wait = Future.wait;
 
             return ED.syncRun( SASSCompile );
 
-            function SASSCompile( done, obj ){
+            function SASSCompile( done ){
                 Compass.compile({
                     sassDir: randomDirname,
                     cssDir: randomDirname,
