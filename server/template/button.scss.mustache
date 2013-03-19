@@ -23,6 +23,9 @@
         @include {{{name}}}({{{ value}}});
     {{/content.mixins}}
     {{{content.scss}}}
+    {{#content.rules}}
+        {{{.}}}
+    {{/content.rules}}
 }
 {{/name}}
 {{/types}}
@@ -35,6 +38,9 @@
         @include {{{name}}}({{{ value}}});
     {{/content.mixins}}
     {{{content.scss}}}
+    {{#content.rules}}
+        {{{.}}}
+    {{/content.rules}}
     }
 {{/name}}
 {{/sizes}}

@@ -18,9 +18,18 @@
                 var path = elem.attr( 'data-key' );
                 if( path ){
                     var value = elem.val() || elem.text();
-                    Utils.namespace( data, path, value );
+
+                    if( value ){
+                        var valueAttr = elem.attr( 'data-value');
+                        if( valueAttr ){
+                            value = Utils.substitute( valueAttr.replace( /\{/g, '{{').replace( /\}/g, '}}' ), { value: value } );
+                        }
+                        Utils.namespace( data, path, value );
+                    }
                 }
             });
+
+            console.log( data );
 
 //            console.log( 'data update: ', data );
             SASS_DATA.update({}, { data: JSON.stringify( data ) } );

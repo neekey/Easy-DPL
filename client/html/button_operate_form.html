@@ -14,15 +14,15 @@
 
                         {{#with control}}
                             {{#if equal type "input"}}
-                            <input type="text" value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" data-key="{{data-key}}" id="{{id}}">
+                            <input {{#if inputType}}type="{{inputType}}"{{else}}type="text"{{/if}} value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" data-key="{{data-key}}" data-value="{{data-value}}" id="{{id}}">
                             {{/if}}
 
                             {{#if equal type "textarea"}}
-                            <textarea  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}"></textarea>
+                            <textarea  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}" data-value="{{data-value}}"></textarea>
                             {{/if}}
 
                             {{#if equal type "select"}}
-                            <select  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}">
+                            <select  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}" data-value="{{data-value}}">
                                 {{#each options}}
                                 <option value="{{value}}">{{text}}</option>
                                 {{/each}}
@@ -31,13 +31,13 @@
 
                             {{#if equal type "checkbox"}}
                             {{#each checkboxes}}
-                            <label class="checkbox"><input type="checkbox"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}">{{label}}</label>
+                            <label class="checkbox"><input type="checkbox"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}" data-value="{{data-value}}">{{label}}</label>
                             {{/each}}
                             {{/if}}
 
                             {{#if equal type "radio"}}
                             {{#each radios}}
-                            <label>{{label}}<input type="radio"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}"></label>
+                            <label>{{label}}<input type="radio"  value="{{value}}" name="{{name}}" class="{{class}}" value="{{value}}" id="{{id}}" data-key="{{data-key}}" data-value="{{data-value}}"></label>
                             {{/each}}
                             {{/if}}
                         {{/with}}
@@ -48,7 +48,7 @@
                 {{#if actions}}
                 <div class="form-actions">
                 {{#each actions}}
-                    <a href="#" value="{{value}}" name="{{name}}" class="{{class}} button-operate-action btn" value="{{value}}" id="{{id}}" data-key="{{data-key}}">{{text}}</a>
+                    <a href="#" value="{{value}}" name="{{name}}" class="{{class}} button-operate-action btn" value="{{value}}" id="{{id}}" data-key="{{data-key}}" data-value="{{data-value}}">{{text}}</a>
                 {{/each}}
                 </div>
                 {{/if}}

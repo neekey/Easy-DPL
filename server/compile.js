@@ -14,6 +14,7 @@ var Future = NodeModules.require('fibers/future'), wait = Future.wait;
             var template = FS.readFileSync( Path.resolve( Config.TEMPLATE_PATH, type + '.scss.mustache' )).toString();
             jsonData.sassBase = Config.SASS_BASE
 
+            console.log( 'JSONData: ', jsonData)
             var output = Mustache.render( template, jsonData );
             var randomDirname = String( Date.now() )+ String( Math.random()).replace( '.', '_' ) + '_tmp~';
             var randomSASSFile = randomDirname + '/' + type + '.scss';

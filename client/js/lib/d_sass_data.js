@@ -5,7 +5,8 @@
     var DefaultData = {
         "base": {
             "mixins": [],
-            "scss": ""
+            "scss": "",
+            "rules": []
         },
         "baseClass": "btn",
         "types": [],

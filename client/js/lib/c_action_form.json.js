@@ -48,12 +48,64 @@ ED.Config.JSON.actionForm = {
                 }
             },
             {
-                "label": "设置样式",
+                "label": "背景（纯色）",
                 "control": {
-                    "type": "textarea",
-                    "data-key": "types[index].content.scss"
+                    "type": "input",
+                    "class": "J_ColorTrigger",
+                    "data-key": "types[index].content.rules[]",
+                    "data-value": "background-color: {value};"
+                }
+            },
+            {
+                "label": "背景（渐变）",
+                "control": {
+                    "type": "input",
+                    "class": "J_ColorTrigger",
+                    "data-key": "types[index].content.rules[]",
+                    "data-value": "@include setButtonBg({value});"
+                }
+            },
+            {
+                "label": "边框",
+                "control": {
+                    "type": "input",
+                    "data-key": "types[index].content.rules[]",
+                    "data-value": "border: {value};"
+                }
+            },
+            {
+                "label": "阴影",
+                "control": {
+                    "type": "input",
+                    "data-key": "types[index].content.rules[]",
+                    "data-value": "@include box-shadow({value});"
+                }
+            },
+            {
+                "label": "字体颜色",
+                "control": {
+                    "type": "input",
+                    "class": "J_ColorTrigger",
+                    "data-key": "types[index].content.rules[]",
+                    "data-value": "color: {value};"
+                }
+            },
+            {
+                "label": "圆角(px)",
+                "control": {
+                    "type": "input",
+                    "inputType": "number",
+                    "data-key": "types[index].content.rules[]",
+                    "data-value": "@include border-radius({value}px);"
                 }
             }
+//            {
+//                "label": "设置样式",
+//                "control": {
+//                    "type": "textarea",
+//                    "data-key": "types[index].content.scss"
+//                }
+//            }
 
         ],
         "actions": [
@@ -74,14 +126,30 @@ ED.Config.JSON.actionForm = {
                     "value": "{{name}}"
                 }
             },
+//            {
+//                "label": "设置样式",
+//                "control": {
+//                    "type": "textarea",
+//                    "data-key": "sizes[index].content.scss"
+//                }
+//            },
             {
-                "label": "设置样式",
+                "label": "字体大小(px)",
                 "control": {
-                    "type": "textarea",
-                    "data-key": "sizes[index].content.scss"
+                    "type": "input",
+                    "inputType": "number",
+                    "data-key": "sizes[index].content.rules[]",
+                    "data-value": "font-size: {value}px;"
+                }
+            },
+            {
+                "label": "内边距",
+                "control": {
+                    "type": "input",
+                    "data-key": "sizes[index].content.rules[]",
+                    "data-value": "padding: {value};"
                 }
             }
-
         ],
         "actions": [
             {
