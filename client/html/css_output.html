@@ -1,8 +1,8 @@
 <template name="cssOutput">
-    <div class="css-output">
+    <div class="css-output {{#unless CSS}} hidden {{/unless}}">
+        <div class="btn btn-primary J_CopyCSS">复制CSS</div>
         <pre>
-            <code>{{{css}}}</code>
+            <code>{{{CSS}}}</code>
         </pre>
-        <span class="btn btn-primary" data-path="{{{path}}}">下载CSS</span>
     </div>
 </template>

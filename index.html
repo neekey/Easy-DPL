@@ -5,17 +5,18 @@
 <body>
 
     <div class="header"></div>
-    <div class="content">
+    <div class="content container">
+        <div class="row">
+            <div class="main span6">
+                {{> buttonActionMenu}}
+                {{> buttonOperateList}}
+                {{> buttonPreview}}
+            </div>
 
-        <div class="main">
-            {{> buttonActionMenu}}
-            {{> buttonOperateList}}
-            {{> buttonPreview}}
+            <div class="side span6">
+                {{> cssOutput}}
+            </div>
         </div>
-        <div class="">
-            {{> cssOutput}}
-        </div>
-
     </div>
     <div class="footer">
     </div>

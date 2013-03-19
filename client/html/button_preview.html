@@ -4,7 +4,7 @@
         <textarea name="custom-html" class="custom-HTML-content"></textarea>
     </div>
     <style>{{{css}}}</style>
-    <div class="custom-preview">
+    <div class="custom-preview {{#unless html}} hidden {{/unless}}" >
         {{{html}}}
     </div>
 </template>

@@ -15,7 +15,6 @@
                     else {
                         PreviewData.update({}, { $set: { css: css } });
                         HTMLData.update({}, { $set: { html: generateAllSelector( JSON.parse(newObj.data) )}})
-
                     }
                 });
             }
@@ -64,18 +63,20 @@
         selectors = selectors.concat( customs );
         selectors.forEach(function( selector ){
 
-            var value = selector.substring( 1 );
-            var type;
-            if( selector[0] == '.' ){
-                type = 'class';
-            }
-            else if( selector[ 0 ] == '#' ){
-                type = 'id';
-            }
+            if( selector ){
+                var value = selector.substring( 1 );
+                var type;
+                if( selector[0] == '.' ){
+                    type = 'class';
+                }
+                else if( selector[ 0 ] == '#' ){
+                    type = 'id';
+                }
 
-            if( value && type ){
+                if( value && type ){
 
-                HTML += '<a href="#"' + type + '="' + value + '">' + selector + '</a>';
+                    HTML += '<a href="#"' + type + '="' + value + '">' + selector + '</a>';
+                }
             }
         });
 
