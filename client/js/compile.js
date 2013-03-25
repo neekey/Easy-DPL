@@ -5,7 +5,7 @@
     var data = SASS_DATA.find({});
     var HTMLData = App.Data.Preview;
 
-    window.hand = data.observeChanges({
+    data.observeChanges({
         'changed': function( id, newObj ){
             if( newObj.data ){
                 Meteor.call( 'compile', 'button', JSON.parse(newObj.data), function( e, css ){

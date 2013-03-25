@@ -1,10 +1,4 @@
 <template name="buttonPreview">
-    <!--<h3>Preview</h3>-->
-    <!--<div class="custom-HTML">-->
-        <!--<textarea name="custom-html" class="custom-HTML-content"></textarea>-->
-    <!--</div>-->
-    <style>{{{css}}}</style>
-    <div class="custom-preview" >
-        {{#if html}} {{{html}}} {{else}} Comiling...{{/if}}
-    </div>
+    <!-- 使用iframe进行掩饰预览，避免当前页面中的boostrap样式干扰 -->
+    <iframe id="preview-frame" src="/html/preview.html"></iframe>
 </template>

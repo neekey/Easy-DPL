@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Easy - DPL Preview</title>
+</head>
+<body>
+    <div id="preview-html" class="preview"></div>
+    <style id="preview-style">
+    </style>
+    <script>
+        window.addEventListener('message', function( e ){
+            var data = e.data;
+            var html = data.html;
+            var css = data.css;
+
+            if( html ){
+                document.getElementById( 'preview-html').innerHTML = html;
+            }
+
+            if( css ){
+                document.getElementById( 'preview-style').innerHTML = css;
+            }
+        }, false);
+    </script>
+</body>
+</html>
