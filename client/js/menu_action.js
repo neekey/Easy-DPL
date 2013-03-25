@@ -8,6 +8,7 @@
         // 默认添加 类名设置和全局样式设置
         addActionForm( 'baseClass' );
         addActionForm( 'base' );
+        compileAllFormData();
     });
 
     // 绑定按钮事件，添加表单
@@ -27,12 +28,43 @@
             });
 
             addActionForm( dataType, renderData );
+            compileAllFormData();
+
+            // 清空input
+            inputs.val( '' );
         }
     });
 
-    Template.buttonOperate.equal = function( a, b ){
+    Template.buttonOperate.equal =
+        Template.buttonOperateGroups.equal =
+        function( a, b ){
         return a === b;
     };
+
+    function compileAllFormData(){
+        var buttonOperateList = $( '.J_ButtonOperateList' );
+        var elements = buttonOperateList.find( '[data-key]' );
+
+        var data = JSON.parse(SASS_DATA.findOne({}).data);
+
+        $(elements).each(function( index, elem ){
+            elem = $( elem );
+            var path = elem.attr( 'data-key' );
+            if( path ){
+                var value = elem.val() || elem.text();
+
+                if( value ){
+                    var valueAttr = elem.attr( 'data-value');
+                    if( valueAttr ){
+                        value = Utils.substitute( valueAttr.replace( /\{/g, '{{').replace( /\}/g, '}}' ), { value: value } );
+                    }
+                    Utils.namespace( data, path, value );
+                }
+            }
+        });
+
+        SASS_DATA.update({}, { data: JSON.stringify( data ) } );
+    }
 
     function actionFormDataHandle( type, data ){
         // 检查对应的type是不是数组

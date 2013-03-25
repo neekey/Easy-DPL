@@ -20,11 +20,19 @@
 {{#name}}
 @include newButtonType({{{name}}}){
     {{#content.mixins}}
-        @include {{{name}}}({{{ value}}});
+    @include {{{name}}}({{{ value}}});
     {{/content.mixins}}
-    {{{content.scss}}}
+        {{{content.scss}}}
     {{#content.rules}}
+        {{#normal}}
         {{{.}}}
+        {{/normal}}
+
+        &:hover {
+            {{#hover}}
+            {{{.}}}
+            {{/hover}}
+        }
     {{/content.rules}}
 }
 {{/name}}
@@ -37,9 +45,17 @@
     {{#content.mixins}}
         @include {{{name}}}({{{ value}}});
     {{/content.mixins}}
-    {{{content.scss}}}
+        {{{content.scss}}}
     {{#content.rules}}
+        {{#normal}}
         {{{.}}}
+        {{/normal}}
+
+        &:hover {
+            {{#hover}}
+            {{{.}}}
+            {{/hover}}
+        }
     {{/content.rules}}
     }
 {{/name}}

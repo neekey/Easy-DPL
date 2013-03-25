@@ -3,7 +3,12 @@
     height: 100px;
 }
 .custom-preview {
+    text-align: center;
     padding: 20px;
     border-radius: 10px;
     background: #eee;
+    margin-bottom: 20px;
+}
+.custom-preview a:hover {
+    color: #333;
 }

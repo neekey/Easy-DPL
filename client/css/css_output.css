@@ -1,0 +1,11 @@
+.css-output-actions {
+    text-align: right;
+    padding: 10px;
+}
+.side {
+    background: #eee;
+}
+pre {
+    border: none;
+    background: none;
+}

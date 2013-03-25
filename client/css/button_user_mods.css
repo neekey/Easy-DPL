@@ -6,3 +6,34 @@
     padding-top: 0;
     padding-bottom: 0;
 }
+
+.button-operate-list {
+    padding: 20px 0;
+    border-top: 1px dotted #eee;
+}
+
+.accordion-toggle {
+    color: #333;
+}
+a.accordion-toggle {
+    text-decoration: none;
+    color: #999;
+}
+.accordion-group-button-type .accordion-toggle {
+    color: #49AFCD;
+}
+.accordion-group-button-type {
+    border-color: #49AFCD;
+}
+.accordion-group-button-size {
+    border-color: #5BB75B;
+}
+.accordion-group-button-size .accordion-toggle {
+    color: #5BB75B;
+}
+.accordion-group-button-custom {
+    border-color: #FAA732;
+}
+.accordion-group-button-custom .accordion-toggle {
+    color: #FAA732;
+}

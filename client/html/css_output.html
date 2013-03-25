@@ -1,6 +1,9 @@
 <template name="cssOutput">
     <div class="css-output {{#unless CSS}} hidden {{/unless}}">
-        <div class="btn btn-primary J_CopyCSS">复制CSS</div>
+
+        <div class="css-output-actions">
+            <span class="btn btn-primary copy-css-button J_CopyCSS">复制CSS</span>
+        </div>
         <pre>
             <code>{{{CSS}}}</code>
         </pre>

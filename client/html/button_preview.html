@@ -1,10 +1,10 @@
 <template name="buttonPreview">
-    <h3>Preview</h3>
-    <div class="custom-HTML">
-        <textarea name="custom-html" class="custom-HTML-content"></textarea>
-    </div>
+    <!--<h3>Preview</h3>-->
+    <!--<div class="custom-HTML">-->
+        <!--<textarea name="custom-html" class="custom-HTML-content"></textarea>-->
+    <!--</div>-->
     <style>{{{css}}}</style>
-    <div class="custom-preview {{#unless html}} hidden {{/unless}}" >
-        {{{html}}}
+    <div class="custom-preview" >
+        {{#if html}} {{{html}}} {{else}} Comiling...{{/if}}
     </div>
 </template>

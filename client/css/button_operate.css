@@ -1,3 +1,8 @@
 .button-operate-form {
     margin-bottom: 0;
 }
+
+.button-action-menu {
+    padding: 20px 0;
+    border-top: 1px dotted #EEE;
+}

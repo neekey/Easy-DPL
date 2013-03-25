@@ -29,9 +29,6 @@
                 }
             });
 
-            console.log( data );
-
-//            console.log( 'data update: ', data );
             SASS_DATA.update({}, { data: JSON.stringify( data ) } );
         }
     });
